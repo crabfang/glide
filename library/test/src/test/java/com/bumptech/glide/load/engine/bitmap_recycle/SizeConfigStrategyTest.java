@@ -1,6 +1,7 @@
 package com.bumptech.glide.load.engine.bitmap_recycle;
 
 import android.graphics.Bitmap;
+import com.bumptech.glide4.load.engine.bitmap_recycle.SizeConfigStrategy;
 import com.google.common.testing.EqualsTester;
 import org.junit.Before;
 import org.junit.Test;

@@ -2,16 +2,20 @@ package com.bumptech.glide.load.resource.gif;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.bumptech.glide.load.ImageHeaderParser;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.ResourceDecoder;
-import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
-import com.bumptech.glide.load.resource.bitmap.DefaultImageHeaderParser;
+import com.bumptech.glide4.load.ImageHeaderParser;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.ResourceDecoder;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
+import com.bumptech.glide4.load.resource.bitmap.DefaultImageHeaderParser;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.bumptech.glide4.load.resource.gif.GifDrawable;
+import com.bumptech.glide4.load.resource.gif.GifOptions;
+import com.bumptech.glide4.load.resource.gif.StreamGifDecoder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

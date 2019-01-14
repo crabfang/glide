@@ -16,6 +16,9 @@ import com.bumptech.glide.manager.Lifecycle;
 import com.bumptech.glide.manager.RequestManagerTreeNode;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide4.annotation.GlideExtension;
+import com.bumptech.glide4.annotation.GlideType;
+
 import java.io.File;
 import java.lang.Class;
 import java.lang.Deprecated;
@@ -27,8 +30,8 @@ import java.lang.SuppressWarnings;
 import java.net.URL;
 
 /**
- * Includes all additions from methods in {@link com.bumptech.glide.annotation.GlideExtension}s
- * annotated with {@link com.bumptech.glide.annotation.GlideType}
+ * Includes all additions from methods in {@link GlideExtension}s
+ * annotated with {@link GlideType}
  *
  * <p>Generated code, do not modify
  */

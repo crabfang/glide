@@ -6,9 +6,10 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
 
 import android.net.Uri;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.model.UriLoader;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.File;
 import java.io.IOException;
 import org.junit.Before;

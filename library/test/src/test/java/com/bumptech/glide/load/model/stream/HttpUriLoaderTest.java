@@ -5,11 +5,13 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 
 import android.net.Uri;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.ModelLoader;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+
+import com.bumptech.glide4.load.model.stream.HttpUriLoader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

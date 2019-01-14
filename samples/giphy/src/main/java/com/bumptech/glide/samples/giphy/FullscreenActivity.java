@@ -10,12 +10,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.load.resource.gif.GifDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide4.RequestBuilder;
+import com.bumptech.glide4.load.DataSource;
+import com.bumptech.glide4.load.engine.GlideException;
+import com.bumptech.glide4.load.resource.gif.GifDrawable;
+import com.bumptech.glide4.request.RequestListener;
+import com.bumptech.glide4.request.target.Target;
 import com.google.gson.Gson;
 
 /**

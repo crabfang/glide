@@ -2,9 +2,10 @@ package com.bumptech.glide.load.data;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
-import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
-import com.bumptech.glide.load.resource.bitmap.DefaultImageHeaderParser;
+import com.bumptech.glide4.load.data.ExifOrientationStream;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
+import com.bumptech.glide4.load.resource.bitmap.DefaultImageHeaderParser;
 import com.bumptech.glide.testutil.TestResourceUtil;
 import java.io.IOException;
 import java.io.InputStream;

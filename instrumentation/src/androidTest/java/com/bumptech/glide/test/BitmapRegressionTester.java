@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import androidx.test.InstrumentationRegistry;
-import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide4.RequestBuilder;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;

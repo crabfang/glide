@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide4.annotation.GlideExtension;
+
 import java.io.File;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -19,7 +21,7 @@ import java.lang.String;
  * The entry point for interacting with Glide for Applications
  *
  * <p>Includes all generated APIs from all
- * {@link com.bumptech.glide.annotation.GlideExtension}s in source and dependent libraries.
+ * {@link GlideExtension}s in source and dependent libraries.
  *
  * <p>This class is generated and should not be modified
  * @see Glide

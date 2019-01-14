@@ -2,18 +2,20 @@ package com.bumptech.glide.integration.volley;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Registry;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.module.AppGlideModule;
-import com.bumptech.glide.module.LibraryGlideModule;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.Registry;
+import com.bumptech.glide4.annotation.GlideModule;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.module.AppGlideModule;
+import com.bumptech.glide4.module.LibraryGlideModule;
+import com.bumptech.glide4.load.model.ModelLoader;
+
 import java.io.InputStream;
 
 /**
- * A {@link com.bumptech.glide.module.GlideModule} implementation to replace Glide's default
- * {@link java.net.HttpURLConnection} based {@link com.bumptech.glide.load.model.ModelLoader} with a
- * Volley based {@link com.bumptech.glide.load.model.ModelLoader}.
+ * A {@link com.bumptech.glide4.module.GlideModule} implementation to replace Glide's default
+ * {@link java.net.HttpURLConnection} based {@link ModelLoader} with a
+ * Volley based {@link ModelLoader}.
  *
  * <p>For Applications that depend on this library and include an
  * {@link AppGlideModule} and Glide's annotation processor, this class

@@ -3,8 +3,9 @@ package com.bumptech.glide.signature;
 
 import static org.mockito.Mockito.mock;
 
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
 import com.bumptech.glide.tests.KeyTester;
+import com.bumptech.glide4.signature.EmptySignature;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -8,16 +8,20 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Key;
-import com.bumptech.glide.load.engine.ActiveResources.DequeuedResourceCallback;
-import com.bumptech.glide.load.engine.ActiveResources.ResourceWeakReference;
-import com.bumptech.glide.load.engine.EngineResource.ResourceListener;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.load.engine.ActiveResources;
+import com.bumptech.glide4.load.engine.ActiveResources.DequeuedResourceCallback;
+import com.bumptech.glide4.load.engine.ActiveResources.ResourceWeakReference;
+import com.bumptech.glide4.load.engine.EngineResource;
+import com.bumptech.glide4.load.engine.EngineResource.ResourceListener;
 import com.bumptech.glide.tests.GlideShadowLooper;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import com.bumptech.glide4.load.engine.Resource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -318,7 +322,7 @@ public class ActiveResourcesTest {
       verify(listener, never()).onResourceReleased(any(Key.class), any(EngineResource.class));
     } finally {
       resources.shutdown();
-      com.bumptech.glide.util.Executors.shutdownAndAwaitTermination(delegate);
+      com.bumptech.glide4.util.Executors.shutdownAndAwaitTermination(delegate);
     }
   }
 
@@ -367,7 +371,7 @@ public class ActiveResourcesTest {
       verify(listener, never()).onResourceReleased(any(Key.class), any(EngineResource.class));
     } finally {
       resources.shutdown();
-      com.bumptech.glide.util.Executors.shutdownAndAwaitTermination(delegate);
+      com.bumptech.glide4.util.Executors.shutdownAndAwaitTermination(delegate);
     }
   }
 

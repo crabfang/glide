@@ -8,7 +8,11 @@ import static org.mockito.Mockito.verify;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import com.bumptech.glide.RequestManager;
+import com.bumptech.glide4.RequestManager;
+import com.bumptech.glide4.manager.ActivityFragmentLifecycle;
+import com.bumptech.glide4.manager.LifecycleListener;
+import com.bumptech.glide4.manager.RequestManagerFragment;
+import com.bumptech.glide4.manager.SupportRequestManagerFragment;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

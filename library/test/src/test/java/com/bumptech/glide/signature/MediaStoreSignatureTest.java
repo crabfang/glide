@@ -1,6 +1,7 @@
 package com.bumptech.glide.signature;
 
 import com.bumptech.glide.tests.KeyTester;
+import com.bumptech.glide4.signature.MediaStoreSignature;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

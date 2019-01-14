@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 buildscript {
     repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         google()
         jcenter()
         maven {
@@ -34,6 +35,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 subprojects { project ->
 
     repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         google()
         jcenter()
         maven {

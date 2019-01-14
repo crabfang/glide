@@ -7,6 +7,7 @@ import static com.google.testing.compile.Compiler.javac;
 
 import com.bumptech.glide.annotation.compiler.test.RegenerateResourcesRule;
 import com.bumptech.glide.annotation.compiler.test.Util;
+import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import java.io.IOException;

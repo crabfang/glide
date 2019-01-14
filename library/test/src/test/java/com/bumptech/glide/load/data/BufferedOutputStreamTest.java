@@ -11,7 +11,8 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
+import com.bumptech.glide4.load.data.BufferedOutputStream;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;

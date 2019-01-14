@@ -6,7 +6,8 @@ import static org.junit.Assert.fail;
 
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.util.Util;
 import com.google.common.base.Equivalence;
 import com.google.common.testing.EquivalenceTester;
 import java.security.MessageDigest;
@@ -123,7 +124,7 @@ public final class KeyTester implements TestRule {
 
 
     String getStringDigest(Key key) {
-      return com.bumptech.glide.util.Util.sha256BytesToHex(getDigest(key));
+      return Util.sha256BytesToHex(getDigest(key));
     }
   }
 

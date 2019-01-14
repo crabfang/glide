@@ -6,10 +6,13 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
 import com.bumptech.glide.tests.KeyTester;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+
+import com.bumptech.glide4.signature.ApplicationVersionSignature;
+import com.bumptech.glide4.signature.ObjectKey;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

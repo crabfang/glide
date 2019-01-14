@@ -2,6 +2,7 @@ package com.bumptech.glide.load.model;
 
 import static org.junit.Assert.assertEquals;
 
+import com.bumptech.glide4.load.model.ModelCache;
 import com.google.common.testing.EqualsTester;
 import org.junit.Before;
 import org.junit.Test;

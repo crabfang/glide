@@ -4,10 +4,10 @@ import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.resource.SimpleResource;
-import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.SimpleResource;
+import com.bumptech.glide4.load.resource.transcode.ResourceTranscoder;
 import com.caverock.androidsvg.SVG;
 
 /**

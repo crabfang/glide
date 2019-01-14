@@ -10,19 +10,19 @@ import com.bumptech.glide.gifdecoder.GifHeader;
 import com.bumptech.glide.gifdecoder.GifHeaderParser;
 import com.bumptech.glide.gifdecoder.StandardGifDecoder;
 import com.bumptech.glide.gifencoder.AnimatedGifEncoder;
-import com.bumptech.glide.load.EncodeStrategy;
-import com.bumptech.glide.load.Option;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.ResourceEncoder;
-import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.UnitTransformation;
-import com.bumptech.glide.load.resource.bitmap.BitmapResource;
-import com.bumptech.glide.load.resource.gif.GifBitmapProvider;
-import com.bumptech.glide.load.resource.gif.GifDrawable;
-import com.bumptech.glide.util.ByteBufferUtil;
-import com.bumptech.glide.util.LogTime;
+import com.bumptech.glide4.load.EncodeStrategy;
+import com.bumptech.glide4.load.Option;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.ResourceEncoder;
+import com.bumptech.glide4.load.Transformation;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide4.load.resource.UnitTransformation;
+import com.bumptech.glide4.load.resource.bitmap.BitmapResource;
+import com.bumptech.glide4.load.resource.gif.GifBitmapProvider;
+import com.bumptech.glide4.load.resource.gif.GifDrawable;
+import com.bumptech.glide4.util.ByteBufferUtil;
+import com.bumptech.glide4.util.LogTime;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,8 +32,8 @@ import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 
 /**
- * An {@link com.bumptech.glide.load.ResourceEncoder} that can write
- * {@link com.bumptech.glide.load.resource.gif.GifDrawable} to cache.
+ * An {@link ResourceEncoder} that can write
+ * {@link GifDrawable} to cache.
  */
 public class ReEncodingGifResourceEncoder implements ResourceEncoder<GifDrawable> {
 

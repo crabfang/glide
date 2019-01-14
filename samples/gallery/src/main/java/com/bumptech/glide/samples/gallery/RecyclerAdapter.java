@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import com.bumptech.glide.ListPreloader;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.Key;
-import com.bumptech.glide.signature.MediaStoreSignature;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.ListPreloader;
+import com.bumptech.glide4.RequestBuilder;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.signature.MediaStoreSignature;
+import com.bumptech.glide4.util.Preconditions;
 import java.util.Collections;
 import java.util.List;
 

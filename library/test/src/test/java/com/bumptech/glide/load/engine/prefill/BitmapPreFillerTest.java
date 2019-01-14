@@ -12,11 +12,14 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.graphics.Bitmap;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.engine.cache.MemoryCache;
+import com.bumptech.glide4.load.DecodeFormat;
+import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide4.load.engine.cache.MemoryCache;
 import com.bumptech.glide.tests.Util.CreateBitmap;
-import com.bumptech.glide.util.Util;
+import com.bumptech.glide4.load.engine.prefill.BitmapPreFiller;
+import com.bumptech.glide4.load.engine.prefill.PreFillQueue;
+import com.bumptech.glide4.load.engine.prefill.PreFillType;
+import com.bumptech.glide4.util.Util;
 import com.google.common.collect.Range;
 import java.util.ArrayList;
 import java.util.List;

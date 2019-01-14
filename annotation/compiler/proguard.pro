@@ -6,7 +6,7 @@
 -keep class !com.bumptech.glide.repackaged.**,com.bumptech.glide.**
 
 # Keep the entry point to this library, see META-INF\services\javax.annotation.processing.Processor
--keep class com.bumptech.glide.annotation.compiler.GlideAnnotationProcessor
+-keep class com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor
 
 
 # "duplicate definition of library class"

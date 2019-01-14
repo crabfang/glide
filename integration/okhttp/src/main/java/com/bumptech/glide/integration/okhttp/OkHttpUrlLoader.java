@@ -1,11 +1,11 @@
 package com.bumptech.glide.integration.okhttp;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.ModelLoader;
-import com.bumptech.glide.load.model.ModelLoaderFactory;
-import com.bumptech.glide.load.model.MultiModelLoaderFactory;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.ModelLoader;
+import com.bumptech.glide4.load.model.ModelLoaderFactory;
+import com.bumptech.glide4.load.model.MultiModelLoaderFactory;
 import com.squareup.okhttp.OkHttpClient;
 import java.io.InputStream;
 

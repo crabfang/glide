@@ -1,8 +1,8 @@
 package com.bumptech.glide.test;
 
 import androidx.test.InstrumentationRegistry;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.RequestManager;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;

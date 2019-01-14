@@ -10,6 +10,7 @@ import com.bumptech.glide.annotation.compiler.test.RegenerateResourcesRule;
 import com.bumptech.glide.annotation.compiler.test.SubDirectory;
 import com.bumptech.glide.annotation.compiler.test.TestDescription;
 import com.bumptech.glide.annotation.compiler.test.Util;
+import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.testing.compile.Compilation;
 import java.io.IOException;
 import javax.tools.JavaFileObject;

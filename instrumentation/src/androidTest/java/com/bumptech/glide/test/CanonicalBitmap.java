@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import androidx.test.InstrumentationRegistry;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.util.Preconditions;
 
 public final class CanonicalBitmap {
   @Nullable

@@ -7,8 +7,10 @@ import static org.junit.Assume.assumeTrue;
 import static org.mockito.Mockito.mock;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Key;
-import com.bumptech.glide.signature.ObjectKey;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.load.engine.cache.DiskCache;
+import com.bumptech.glide4.load.engine.cache.DiskLruCacheWrapper;
+import com.bumptech.glide4.signature.ObjectKey;
 import com.bumptech.glide.tests.Util;
 import java.io.File;
 import java.io.IOException;

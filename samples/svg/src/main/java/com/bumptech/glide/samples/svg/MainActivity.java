@@ -1,6 +1,6 @@
 package com.bumptech.glide.samples.svg;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+import static com.bumptech.glide4.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.RequestBuilder;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.File;
 
 /**

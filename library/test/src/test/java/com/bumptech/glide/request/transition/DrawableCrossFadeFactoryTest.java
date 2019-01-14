@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import android.graphics.drawable.Drawable;
-import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide4.load.DataSource;
+import com.bumptech.glide4.request.transition.DrawableCrossFadeFactory;
+import com.bumptech.glide4.request.transition.NoTransition;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

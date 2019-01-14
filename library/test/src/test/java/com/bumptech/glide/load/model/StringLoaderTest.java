@@ -9,12 +9,15 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
 
 import android.net.Uri;
-import com.bumptech.glide.load.Key;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.data.DataFetcher;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.data.DataFetcher;
 import com.bumptech.glide.tests.Util;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.model.ModelLoader;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.File;
+
+import com.bumptech.glide4.load.model.StringLoader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +28,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /**
- * Tests for the {@link com.bumptech.glide.load.model.StringLoader} class.
+ * Tests for the {@link StringLoader} class.
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = Config.NONE, sdk = 18)

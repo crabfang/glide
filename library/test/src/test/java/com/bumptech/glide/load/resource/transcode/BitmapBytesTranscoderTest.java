@@ -6,9 +6,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.graphics.Bitmap;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.transcode.BitmapBytesTranscoder;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.ByteArrayOutputStream;
 import org.junit.Before;
 import org.junit.Test;

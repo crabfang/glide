@@ -5,6 +5,8 @@ import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 import static org.junit.Assert.fail;
 
+import com.bumptech.glide4.annotation.GlideExtension;
+import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;
@@ -13,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Checks assertions on {@link com.bumptech.glide.annotation.GlideExtension}s themselves.
+ * Checks assertions on {@link GlideExtension}s themselves.
  */
 // Avoid warnings when asserting on exceptions.
 @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -29,7 +31,7 @@ public class InvalidGlideExtensionTest {
               JavaFileObjects.forSourceLines(
                   "PublicConstructor",
                   "package com.bumptech.glide.test;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "public class PublicConstructor { }"));
       fail("Failed to throw expected exception");
@@ -51,7 +53,7 @@ public class InvalidGlideExtensionTest {
               JavaFileObjects.forSourceLines(
                   "PackagePrivateExtension",
                   "package com.bumptech.glide.test;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "class PackagePrivateExtension {",
                   "  private PackagePrivateExtension() {}",
@@ -74,7 +76,7 @@ public class InvalidGlideExtensionTest {
               JavaFileObjects.forSourceLines(
                   "ConstructorParametersExtension",
                   "package com.bumptech.glide.test;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "public class ConstructorParametersExtension {",
                   "  private ConstructorParametersExtension(int failParam) {}",
@@ -98,7 +100,7 @@ public class InvalidGlideExtensionTest {
                 JavaFileObjects.forSourceLines(
                     "Extension",
                     "package com.bumptech.glide.test;",
-                    "import com.bumptech.glide.annotation.GlideExtension;",
+                    "import com.bumptech.glide4.annotation.GlideExtension;",
                     "@GlideExtension",
                     "public class Extension {",
                     "  private Extension() {}",
@@ -117,7 +119,7 @@ public class InvalidGlideExtensionTest {
                 JavaFileObjects.forSourceLines(
                     "Extension",
                     "package com.bumptech.glide.test;",
-                    "import com.bumptech.glide.annotation.GlideExtension;",
+                    "import com.bumptech.glide4.annotation.GlideExtension;",
                     "@GlideExtension",
                     "public class Extension {",
                     "  private Extension() {}",

@@ -3,6 +3,7 @@ package com.bumptech.glide.load.engine.executor;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
+import com.bumptech.glide4.load.engine.executor.GlideExecutor;
 import com.google.common.util.concurrent.ForwardingExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import java.util.concurrent.Callable;

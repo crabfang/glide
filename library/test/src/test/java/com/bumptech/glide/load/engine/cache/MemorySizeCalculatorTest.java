@@ -9,6 +9,7 @@ import android.content.Context;
 import android.os.Build;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculatorTest.LowRamActivityManager;
 import com.bumptech.glide.tests.Util;
+import com.bumptech.glide4.load.engine.cache.MemorySizeCalculator;
 import com.google.common.collect.Range;
 import org.junit.After;
 import org.junit.Before;

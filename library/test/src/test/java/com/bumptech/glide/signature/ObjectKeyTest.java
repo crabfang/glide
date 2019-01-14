@@ -2,6 +2,8 @@ package com.bumptech.glide.signature;
 
 import com.bumptech.glide.tests.KeyTester;
 import java.security.NoSuchAlgorithmException;
+
+import com.bumptech.glide4.signature.ObjectKey;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

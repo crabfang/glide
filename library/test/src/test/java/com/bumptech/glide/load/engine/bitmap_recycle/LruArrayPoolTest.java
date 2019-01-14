@@ -12,6 +12,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayAdapterInterface;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ByteArrayAdapter;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

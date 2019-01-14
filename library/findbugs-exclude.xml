@@ -9,20 +9,20 @@
 
     <!-- BytesResource is the wrapper that is given control of the data. -->
     <Match>
-        <Class name="com.bumptech.glide.load.resource.bytes.BytesResource"/>
+        <Class name="com.bumptech.glide4.load.resource.bytes.BytesResource"/>
         <Method name="get"/>
         <Bug pattern="EI_EXPOSE_REP"/>
     </Match>
 
     <!-- We would rather expose the internal bytes than box or copy them. -->
     <Match>
-        <Class name="com.bumptech.glide.load.resource.bytes.BytesResource"/>
+        <Class name="com.bumptech.glide4.load.resource.bytes.BytesResource"/>
         <Bug pattern="EI_EXPOSE_REP2"/>
     </Match>
 
     <!-- RecyclableBufferedInputStream safely re-uses pooled byte arrays -->
     <Match>
-        <Class name="com.bumptech.glide.load.resource.bitmap.RecyclableBufferedInputStream"/>
+        <Class name="com.bumptech.glide4.load.resource.bitmap.RecyclableBufferedInputStream"/>
         <Bug pattern="EI_EXPOSE_REP2"/>
     </Match>
 
@@ -32,7 +32,7 @@
         <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
     </Match>
     <Match>
-       <Class name="com.bumptech.glide.load.engine.GlideException$IndentedPrintStream" />
+       <Class name="com.bumptech.glide4.load.engine.GlideException$IndentedPrintStream" />
        <Bug pattern="DM_DEFAULT_ENCODING" />
     </Match>
 
@@ -44,13 +44,13 @@
 
     <!-- Re-using the byte array saves allocations, there's no serious risk of mutations. -->
     <Match>
-      <Class name="com.bumptech.glide.util.FixedPreloadSizeProvider" />
+      <Class name="com.bumptech.glide4.util.FixedPreloadSizeProvider" />
       <Bug pattern="EI_EXPOSE_REP" />
     </Match>
 
     <!-- We just cache the value of hashcode, no need to also override equals. -->
     <Match>
-      <Class name="com.bumptech.glide.util.CachedHashCodeArrayMap" />
+      <Class name="com.bumptech.glide4.util.CachedHashCodeArrayMap" />
       <Bug pattern="EQ_DOESNT_OVERRIDE_EQUALS" />
     </Match>
 

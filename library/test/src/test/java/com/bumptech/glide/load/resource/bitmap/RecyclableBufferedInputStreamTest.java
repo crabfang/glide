@@ -7,12 +7,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
-import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+
+import com.bumptech.glide4.load.resource.bitmap.RecyclableBufferedInputStream;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

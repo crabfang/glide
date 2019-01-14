@@ -6,7 +6,8 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.SizeStrategy.Key;
+import com.bumptech.glide4.load.engine.bitmap_recycle.SizeStrategy;
+import com.bumptech.glide4.load.engine.bitmap_recycle.SizeStrategy.Key;
 import com.google.common.testing.EqualsTester;
 import org.junit.Before;
 import org.junit.Test;

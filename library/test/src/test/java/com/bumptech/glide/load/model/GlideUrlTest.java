@@ -4,6 +4,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.Headers;
 import com.google.common.testing.EqualsTester;
 import java.net.MalformedURLException;
 import java.net.URL;

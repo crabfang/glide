@@ -3,6 +3,8 @@ package com.bumptech.glide.load.engine.bitmap_recycle;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertNull;
 
+import com.bumptech.glide4.load.engine.bitmap_recycle.GroupedLinkedMap;
+import com.bumptech.glide4.load.engine.bitmap_recycle.Poolable;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

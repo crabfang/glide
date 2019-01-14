@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import android.graphics.Bitmap;
+import com.bumptech.glide4.load.engine.bitmap_recycle.AttributeStrategy;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruBitmapPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruPoolStrategy;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

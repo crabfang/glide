@@ -8,6 +8,9 @@ import static com.google.testing.compile.Compiler.javac;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
+import com.bumptech.glide4.annotation.GlideExtension;
+import com.bumptech.glide4.annotation.GlideType;
+import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;
@@ -17,8 +20,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Checks assertions on {@link com.bumptech.glide.annotation.GlideExtension}s for methods annotated
- * with {@link com.bumptech.glide.annotation.GlideType}.
+ * Checks assertions on {@link GlideExtension}s for methods annotated
+ * with {@link GlideType}.
  */
 // Ignore warnings since most methods use assertThrows.
 @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -40,8 +43,8 @@ public class InvalidGlideTypeExtensionTest {
                         "Extension",
                         "package com.bumptech.glide.test;",
                         "import android.support.annotation.NonNull;",
-                        "import com.bumptech.glide.annotation.GlideExtension;",
-                        "import com.bumptech.glide.annotation.GlideType;",
+                        "import com.bumptech.glide4.annotation.GlideExtension;",
+                        "import com.bumptech.glide4.annotation.GlideType;",
                         "@GlideExtension",
                         "public class Extension {",
                         "  private Extension() {}",
@@ -73,8 +76,8 @@ public class InvalidGlideTypeExtensionTest {
                     JavaFileObjects.forSourceLines(
                         "Extension",
                         "package com.bumptech.glide.test;",
-                        "import com.bumptech.glide.annotation.GlideExtension;",
-                        "import com.bumptech.glide.annotation.GlideType;",
+                        "import com.bumptech.glide4.annotation.GlideExtension;",
+                        "import com.bumptech.glide4.annotation.GlideType;",
                         "@GlideExtension",
                         "public class Extension {",
                         "  private Extension() {}",
@@ -98,8 +101,8 @@ public class InvalidGlideTypeExtensionTest {
                 "package com.bumptech.glide.test;",
                 "import android.support.annotation.NonNull;",
                 "import com.bumptech.glide.RequestBuilder;",
-                "import com.bumptech.glide.annotation.GlideExtension;",
-                "import com.bumptech.glide.annotation.GlideType;",
+                "import com.bumptech.glide4.annotation.GlideExtension;",
+                "import com.bumptech.glide4.annotation.GlideType;",
                 "@GlideExtension",
                 "public class Extension {",
                 "  private Extension() {}",
@@ -124,8 +127,8 @@ public class InvalidGlideTypeExtensionTest {
                   "package com.bumptech.glide.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
-                  "import com.bumptech.glide.annotation.GlideType;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideType;",
                   "@GlideExtension",
                   "public class WrongParameterTypeExtension {",
                   "  private WrongParameterTypeExtension() {}",
@@ -164,8 +167,8 @@ public class InvalidGlideTypeExtensionTest {
                         "package com.bumptech.glide.test;",
                         "import android.support.annotation.NonNull;",
                         "import com.bumptech.glide.RequestBuilder;",
-                        "import com.bumptech.glide.annotation.GlideExtension;",
-                        "import com.bumptech.glide.annotation.GlideType;",
+                        "import com.bumptech.glide4.annotation.GlideExtension;",
+                        "import com.bumptech.glide4.annotation.GlideType;",
                         "@GlideExtension",
                         "public class Extension {",
                         "  private Extension() {}",
@@ -193,8 +196,8 @@ public class InvalidGlideTypeExtensionTest {
                     "import android.graphics.drawable.Drawable;",
                     "import android.support.annotation.NonNull;",
                     "import com.bumptech.glide.RequestBuilder;",
-                    "import com.bumptech.glide.annotation.GlideExtension;",
-                    "import com.bumptech.glide.annotation.GlideType;",
+                    "import com.bumptech.glide4.annotation.GlideExtension;",
+                    "import com.bumptech.glide4.annotation.GlideType;",
                     "@GlideExtension",
                     "public class Extension {",
                     "  private Extension() {}",
@@ -230,8 +233,8 @@ public class InvalidGlideTypeExtensionTest {
                     "package com.bumptech.glide.test;",
                     "import android.support.annotation.NonNull;",
                     "import com.bumptech.glide.RequestBuilder;",
-                    "import com.bumptech.glide.annotation.GlideExtension;",
-                    "import com.bumptech.glide.annotation.GlideType;",
+                    "import com.bumptech.glide4.annotation.GlideExtension;",
+                    "import com.bumptech.glide4.annotation.GlideType;",
                     "@GlideExtension",
                     "public class Extension {",
                     "  private Extension() {}",
@@ -257,8 +260,8 @@ public class InvalidGlideTypeExtensionTest {
                   "package com.bumptech.glide.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
-                  "import com.bumptech.glide.annotation.GlideType;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideType;",
                   "@GlideExtension",
                   "public class WrongReturnTypeExtension {",
                   "  private WrongReturnTypeExtension() {}",
@@ -290,8 +293,8 @@ public class InvalidGlideTypeExtensionTest {
                   "package com.bumptech.glide.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
-                  "import com.bumptech.glide.annotation.GlideType;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideType;",
                   "@GlideExtension",
                   "public class WrongBuilderTypeExtension {",
                   "  private WrongBuilderTypeExtension() {}",
@@ -332,8 +335,8 @@ public class InvalidGlideTypeExtensionTest {
                         "package com.bumptech.glide.test;",
                         "import android.support.annotation.NonNull;",
                         "import com.bumptech.glide.RequestBuilder;",
-                        "import com.bumptech.glide.annotation.GlideExtension;",
-                        "import com.bumptech.glide.annotation.GlideType;",
+                        "import com.bumptech.glide4.annotation.GlideExtension;",
+                        "import com.bumptech.glide4.annotation.GlideType;",
                         "@GlideExtension",
                         "public class Extension {",
                         "  private Extension() {}",
@@ -360,8 +363,8 @@ public class InvalidGlideTypeExtensionTest {
                   "package com.bumptech.glide.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
-                  "import com.bumptech.glide.annotation.GlideExtension;",
-                  "import com.bumptech.glide.annotation.GlideType;",
+                  "import com.bumptech.glide4.annotation.GlideExtension;",
+                  "import com.bumptech.glide4.annotation.GlideType;",
                   "@GlideExtension",
                   "public class IncorrectParameterExtension {",
                   "  private IncorrectParameterExtension() {}",
@@ -393,8 +396,8 @@ public class InvalidGlideTypeExtensionTest {
                     "Extension",
                     "package com.bumptech.glide.test;",
                     "import com.bumptech.glide.RequestBuilder;",
-                    "import com.bumptech.glide.annotation.GlideExtension;",
-                    "import com.bumptech.glide.annotation.GlideType;",
+                    "import com.bumptech.glide4.annotation.GlideExtension;",
+                    "import com.bumptech.glide4.annotation.GlideType;",
                     "@GlideExtension",
                     "public class Extension {",
                     "  private Extension() {}",

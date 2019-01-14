@@ -8,7 +8,8 @@ import static org.mockito.Mockito.verify;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide4.load.resource.bitmap.BitmapDrawableResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

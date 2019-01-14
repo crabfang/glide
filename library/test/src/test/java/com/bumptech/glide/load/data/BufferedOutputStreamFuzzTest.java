@@ -5,7 +5,8 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
+import com.bumptech.glide4.load.data.BufferedOutputStream;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;

@@ -9,6 +9,8 @@ import static org.mockito.Mockito.when;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.bumptech.glide4.util.ContentLengthInputStream;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

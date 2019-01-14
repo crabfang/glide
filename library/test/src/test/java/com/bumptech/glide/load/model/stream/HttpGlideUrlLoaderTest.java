@@ -3,11 +3,12 @@ package com.bumptech.glide.load.model.stream;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.mock;
 
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.data.HttpUrlFetcher;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.HttpUrlFetcher;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.stream.HttpGlideUrlLoader;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.InputStream;
 import org.junit.Before;
 import org.junit.Test;

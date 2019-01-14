@@ -2,25 +2,28 @@ package com.bumptech.glide.integration.okhttp;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.Registry;
-import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.GlideBuilder;
+import com.bumptech.glide4.Registry;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.ModelLoader;
+import com.bumptech.glide4.module.GlideModule;
+
 import java.io.InputStream;
 
 /**
- * A {@link com.bumptech.glide.module.GlideModule} implementation to replace Glide's default
- * {@link java.net.HttpURLConnection} based {@link com.bumptech.glide.load.model.ModelLoader}
- * with an OkHttp based {@link com.bumptech.glide.load.model.ModelLoader}.
+ * A {@link GlideModule} implementation to replace Glide's default
+ * {@link java.net.HttpURLConnection} based {@link ModelLoader}
+ * with an OkHttp based {@link ModelLoader}.
  *
  * <p> If you're using gradle, you can include this module simply by depending on the aar, the
  * module will be merged in by manifest merger. For other build systems or for more more
- * information, see {@link com.bumptech.glide.module.GlideModule}. </p>
+ * information, see {@link GlideModule}. </p>
  *
  * @deprecated replaced with com.bumptech.glide.integration.okhttp3.OkHttpGlideModule.
  */
 @Deprecated
-public class OkHttpGlideModule implements com.bumptech.glide.module.GlideModule {
+public class OkHttpGlideModule implements GlideModule {
   @Override
   public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
     // Do nothing.

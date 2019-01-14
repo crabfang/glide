@@ -6,8 +6,9 @@ import static org.mockito.Mockito.when;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.Resource;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.transcode.BitmapDrawableTranscoder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

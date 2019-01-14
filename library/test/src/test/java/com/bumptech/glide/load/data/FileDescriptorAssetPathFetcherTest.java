@@ -9,8 +9,11 @@ import static org.mockito.Mockito.when;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.os.ParcelFileDescriptor;
-import com.bumptech.glide.Priority;
+import com.bumptech.glide4.Priority;
 import java.io.IOException;
+
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.FileDescriptorAssetPathFetcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

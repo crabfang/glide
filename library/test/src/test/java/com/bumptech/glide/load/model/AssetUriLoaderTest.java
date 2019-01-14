@@ -8,9 +8,10 @@ import static org.mockito.Mockito.when;
 
 import android.content.res.AssetManager;
 import android.net.Uri;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.model.AssetUriLoader;
+import com.bumptech.glide4.util.Preconditions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

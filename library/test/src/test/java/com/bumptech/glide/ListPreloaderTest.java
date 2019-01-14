@@ -10,8 +10,11 @@ import static org.mockito.Mockito.verify;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.request.target.SizeReadyCallback;
-import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide4.ListPreloader;
+import com.bumptech.glide4.RequestBuilder;
+import com.bumptech.glide4.RequestManager;
+import com.bumptech.glide4.request.target.SizeReadyCallback;
+import com.bumptech.glide4.request.target.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

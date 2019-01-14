@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 
-import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide4.load.DataSource;
+import com.bumptech.glide4.request.transition.NoTransition;
+import com.bumptech.glide4.request.transition.ViewPropertyAnimationFactory;
+import com.bumptech.glide4.request.transition.ViewPropertyTransition;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

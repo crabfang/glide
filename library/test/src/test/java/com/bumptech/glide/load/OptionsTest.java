@@ -1,10 +1,13 @@
 package com.bumptech.glide.load;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Option.CacheKeyUpdater;
+import com.bumptech.glide4.load.Option;
+import com.bumptech.glide4.load.Option.CacheKeyUpdater;
 import com.bumptech.glide.tests.KeyTester;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
+
+import com.bumptech.glide4.load.Options;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

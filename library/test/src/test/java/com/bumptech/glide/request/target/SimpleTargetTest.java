@@ -4,7 +4,10 @@ import static org.mockito.Mockito.mock;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.request.transition.Transition;
+import com.bumptech.glide4.request.target.SimpleTarget;
+import com.bumptech.glide4.request.target.SizeReadyCallback;
+import com.bumptech.glide4.request.target.Target;
+import com.bumptech.glide4.request.transition.Transition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

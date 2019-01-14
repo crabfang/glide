@@ -4,6 +4,7 @@ import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 import static org.junit.Assert.assertThrows;
 
+import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;
 import org.junit.Test;
@@ -31,8 +32,8 @@ public class InvalidAppGlideModuleWithExcludesTest {
                     JavaFileObjects.forSourceLines(
                         "AppModuleWithExcludes",
                         "package com.bumptech.glide.test;",
-                        "import com.bumptech.glide.annotation.Excludes;",
-                        "import com.bumptech.glide.annotation.GlideModule;",
+                        "import com.bumptech.glide4.annotation.Excludes;",
+                        "import com.bumptech.glide4.annotation.GlideModule;",
                         "import com.bumptech.glide.module.AppGlideModule;",
                         "import com.bumptech.glide.test.EmptyLibraryModule;",
                         "@GlideModule",
@@ -51,8 +52,8 @@ public class InvalidAppGlideModuleWithExcludesTest {
                 JavaFileObjects.forSourceLines(
                     "AppModuleWithExcludes",
                     "package com.bumptech.glide.test;",
-                    "import com.bumptech.glide.annotation.Excludes;",
-                    "import com.bumptech.glide.annotation.GlideModule;",
+                    "import com.bumptech.glide4.annotation.Excludes;",
+                    "import com.bumptech.glide4.annotation.GlideModule;",
                     "import com.bumptech.glide.module.AppGlideModule;",
                     "import com.bumptech.glide.test.EmptyLibraryModule;",
                     "@GlideModule",
@@ -70,8 +71,8 @@ public class InvalidAppGlideModuleWithExcludesTest {
                 JavaFileObjects.forSourceLines(
                     "AppModuleWithExcludes",
                     "package com.bumptech.glide.test;",
-                    "import com.bumptech.glide.annotation.Excludes;",
-                    "import com.bumptech.glide.annotation.GlideModule;",
+                    "import com.bumptech.glide4.annotation.Excludes;",
+                    "import com.bumptech.glide4.annotation.GlideModule;",
                     "import com.bumptech.glide.module.AppGlideModule;",
                     "import com.bumptech.glide.test.EmptyLibraryModule;",
                     "@GlideModule",

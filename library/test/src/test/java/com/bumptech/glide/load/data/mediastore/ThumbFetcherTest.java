@@ -7,9 +7,12 @@ import static org.mockito.Mockito.when;
 
 import android.net.Uri;
 import android.provider.MediaStore;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.data.DataFetcher;
+import com.bumptech.glide4.Priority;
+import com.bumptech.glide4.load.data.DataFetcher;
 import java.io.InputStream;
+
+import com.bumptech.glide4.load.data.mediastore.ThumbFetcher;
+import com.bumptech.glide4.load.data.mediastore.ThumbnailStreamOpener;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

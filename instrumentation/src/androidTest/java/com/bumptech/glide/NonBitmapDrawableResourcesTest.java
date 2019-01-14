@@ -1,7 +1,7 @@
 package com.bumptech.glide;
 
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
-import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
+import static com.bumptech.glide4.request.RequestOptions.bitmapTransform;
+import static com.bumptech.glide4.request.RequestOptions.centerCropTransform;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
@@ -18,7 +18,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.test.ResourceIds;
 import com.bumptech.glide.test.TearDownGlide;
 import java.util.HashSet;

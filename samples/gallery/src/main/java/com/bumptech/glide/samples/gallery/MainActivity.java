@@ -11,7 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
-import com.bumptech.glide.MemoryCategory;
+import com.bumptech.glide4.MemoryCategory;
 
 /**
  * Displays a {@link HorizontalGalleryFragment}.

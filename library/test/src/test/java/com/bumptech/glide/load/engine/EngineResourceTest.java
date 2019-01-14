@@ -11,7 +11,9 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
+import com.bumptech.glide4.load.engine.EngineResource;
+import com.bumptech.glide4.load.engine.Resource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

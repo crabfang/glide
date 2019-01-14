@@ -6,10 +6,10 @@ import javax.tools.JavaFileObject;
 /** Test utilities. */
 public final class Util {
   private static final String REGENERATE_TEST_RESOURCES_PROPERTY_NAME =
-      "com.bumptech.glide.annotation.compiler.test.regenerate.path";
-  private static final String GLIDE_PACKAGE_NAME = "com.bumptech.glide";
+      "com.bumptech.glide4.annotation.compiler.test.regenerate.path";
+  private static final String GLIDE_PACKAGE_NAME = "com.bumptech.glide4";
   private static final String SUB_PACKAGE_NAME = qualified(GLIDE_PACKAGE_NAME, "test");
-  private static final String ANNOTATION_PACKAGE_NAME = "com.bumptech.glide.annotation.compiler";
+  private static final String ANNOTATION_PACKAGE_NAME = "com.bumptech.glide4.annotation.compiler";
   private static final String DEFAULT_APP_DIR_NAME = "EmptyAppGlideModuleTest";
   private static final String DEFAULT_LIBRARY_DIR_NAME = "EmptyLibraryGlideModuleTest";
   /**

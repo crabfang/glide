@@ -14,6 +14,7 @@ import com.bumptech.glide.test.ConcurrencyHelper;
 import com.bumptech.glide.test.GlideApp;
 import com.bumptech.glide.test.ResourceIds;
 import com.bumptech.glide.test.TearDownGlide;
+import com.bumptech.glide4.Glide;
 import com.google.common.io.ByteStreams;
 import java.io.BufferedOutputStream;
 import java.io.File;

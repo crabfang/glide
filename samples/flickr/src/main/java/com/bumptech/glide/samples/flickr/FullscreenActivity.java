@@ -1,6 +1,6 @@
 package com.bumptech.glide.samples.flickr;
 
-import static com.bumptech.glide.request.RequestOptions.fitCenterTransform;
+import static com.bumptech.glide4.request.RequestOptions.fitCenterTransform;
 
 import android.content.Context;
 import android.content.Intent;

@@ -5,6 +5,8 @@ import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.bumptech.glide4.load.resource.gif.GifDrawable;
+import com.bumptech.glide4.load.resource.gif.GifDrawableResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

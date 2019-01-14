@@ -10,6 +10,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.graphics.Bitmap;
 import android.widget.RemoteViews;
+import com.bumptech.glide4.request.target.AppWidgetTarget;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

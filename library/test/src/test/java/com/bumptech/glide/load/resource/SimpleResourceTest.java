@@ -2,6 +2,7 @@ package com.bumptech.glide.load.resource;
 
 import static org.junit.Assert.assertEquals;
 
+import com.bumptech.glide4.load.resource.SimpleResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

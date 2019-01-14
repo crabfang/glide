@@ -7,8 +7,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide4.Priority;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.HttpUrlFetcher;
+import com.bumptech.glide4.load.model.GlideUrl;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

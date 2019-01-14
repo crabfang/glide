@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import android.view.View;
 import android.view.ViewGroup;
+import com.bumptech.glide4.util.ViewPreloadSizeProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

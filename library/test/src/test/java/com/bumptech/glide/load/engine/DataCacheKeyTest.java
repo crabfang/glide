@@ -3,12 +3,14 @@ package com.bumptech.glide.load.engine;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
 
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
 import com.bumptech.glide.tests.KeyTester;
 import com.bumptech.glide.tests.Util.WriteDigest;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.bumptech.glide4.load.engine.DataCacheKey;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

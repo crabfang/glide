@@ -16,6 +16,8 @@ import com.bumptech.glide.test.ResourceIds;
 import com.bumptech.glide.test.TearDownGlide;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import com.bumptech.glide4.Glide;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

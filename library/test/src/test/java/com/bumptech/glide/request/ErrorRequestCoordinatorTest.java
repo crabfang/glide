@@ -6,6 +6,9 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.bumptech.glide4.request.ErrorRequestCoordinator;
+import com.bumptech.glide4.request.Request;
+import com.bumptech.glide4.request.RequestCoordinator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -4,16 +4,18 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.ImageHeaderParser;
-import com.bumptech.glide.load.ImageHeaderParser.ImageType;
-import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
-import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
+import com.bumptech.glide4.load.ImageHeaderParser;
+import com.bumptech.glide4.load.ImageHeaderParser.ImageType;
+import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
 import com.bumptech.glide.testutil.TestResourceUtil;
 import java.io.ByteArrayInputStream;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+
+import com.bumptech.glide4.load.resource.bitmap.DefaultImageHeaderParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

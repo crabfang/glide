@@ -15,13 +15,14 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.request.RequestOptions;
+import com.bumptech.glide4.load.data.StreamLocalUriFetcher;
+import com.bumptech.glide4.request.target.Target;
+import com.bumptech.glide4.util.Preconditions;
 
 /**
  * An activity that demonstrates loading photos using
- * {@link com.bumptech.glide.load.data.StreamLocalUriFetcher content uris} through Glide.
+ * {@link StreamLocalUriFetcher content uris} through Glide.
  * It works by making the user to choose a contact when presses a button,
  * and after he chooses a contact with photo,
  * We try to load both a high res image and thumbnail image of that contact with various Uris.

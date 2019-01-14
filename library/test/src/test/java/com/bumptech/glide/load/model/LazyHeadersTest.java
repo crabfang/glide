@@ -5,7 +5,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import android.support.annotation.Nullable;
-import com.bumptech.glide.load.model.LazyHeaders.Builder;
+import com.bumptech.glide4.load.model.LazyHeaderFactory;
+import com.bumptech.glide4.load.model.LazyHeaders;
+import com.bumptech.glide4.load.model.LazyHeaders.Builder;
 import com.google.common.testing.EqualsTester;
 import java.util.Map;
 import org.junit.After;

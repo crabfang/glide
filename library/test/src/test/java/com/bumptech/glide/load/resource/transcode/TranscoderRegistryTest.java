@@ -5,6 +5,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 import java.io.File;
+
+import com.bumptech.glide4.load.resource.transcode.ResourceTranscoder;
+import com.bumptech.glide4.load.resource.transcode.TranscoderRegistry;
+import com.bumptech.glide4.load.resource.transcode.UnitTranscoder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

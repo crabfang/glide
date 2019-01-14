@@ -5,11 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.ListPreloader;
-import com.bumptech.glide.ListPreloader.PreloadModelProvider;
-import com.bumptech.glide.ListPreloader.PreloadSizeProvider;
-import com.bumptech.glide.RequestManager;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.ListPreloader;
+import com.bumptech.glide4.ListPreloader.PreloadModelProvider;
+import com.bumptech.glide4.ListPreloader.PreloadSizeProvider;
+import com.bumptech.glide4.RequestManager;
 
 /**
  * Loads a few resources ahead in the direction of scrolling in any {@link RecyclerView} so that

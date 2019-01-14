@@ -6,9 +6,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.Headers;
+import com.bumptech.glide4.Priority;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.HttpUrlFetcher;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.Headers;
 import com.bumptech.glide.testutil.TestUtil;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +33,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 /**
- * Tests {@link com.bumptech.glide.load.data.HttpUrlFetcher} against server responses. Tests for
+ * Tests {@link HttpUrlFetcher} against server responses. Tests for
  * behavior (connection/disconnection/options) should go in
  * {@link com.bumptech.glide.load.data.HttpUrlFetcherTest}, response handling should go here.
  */

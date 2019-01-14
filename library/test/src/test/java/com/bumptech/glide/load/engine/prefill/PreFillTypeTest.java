@@ -3,6 +3,7 @@ package com.bumptech.glide.load.engine.prefill;
 import static org.junit.Assert.assertEquals;
 
 import android.graphics.Bitmap;
+import com.bumptech.glide4.load.engine.prefill.PreFillType;
 import com.google.common.testing.EqualsTester;
 import org.junit.Test;
 import org.junit.runner.RunWith;

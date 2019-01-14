@@ -12,8 +12,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide4.load.DataSource;
+import com.bumptech.glide4.request.Request;
+import com.bumptech.glide4.request.RequestFutureTarget;
+import com.bumptech.glide4.request.target.SizeReadyCallback;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;

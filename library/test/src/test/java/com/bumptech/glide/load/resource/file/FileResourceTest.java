@@ -3,6 +3,8 @@ package com.bumptech.glide.load.resource.file;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+
+import com.bumptech.glide4.load.resource.file.FileResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

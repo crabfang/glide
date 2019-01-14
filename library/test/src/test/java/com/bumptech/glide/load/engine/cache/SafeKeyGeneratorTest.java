@@ -3,10 +3,12 @@ package com.bumptech.glide.load.engine.cache;
 import static org.junit.Assert.assertTrue;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Key;
+import com.bumptech.glide4.load.Key;
 import java.security.MessageDigest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.bumptech.glide4.load.engine.cache.SafeKeyGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

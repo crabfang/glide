@@ -6,9 +6,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.res.AssetManager;
-import com.bumptech.glide.Priority;
+import com.bumptech.glide4.Priority;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.StreamAssetPathFetcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

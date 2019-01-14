@@ -9,10 +9,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.Priority;
+import com.bumptech.glide4.Priority;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.data.LocalUriFetcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

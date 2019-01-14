@@ -13,7 +13,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.app.Application;
-import com.bumptech.glide.load.engine.Resource;
+import com.bumptech.glide4.load.MultiTransformation;
+import com.bumptech.glide4.load.Transformation;
+import com.bumptech.glide4.load.engine.Resource;
 import com.bumptech.glide.tests.KeyTester;
 import com.bumptech.glide.tests.Util;
 import java.security.MessageDigest;

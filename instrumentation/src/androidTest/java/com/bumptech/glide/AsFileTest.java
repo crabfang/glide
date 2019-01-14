@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide4.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.test.ConcurrencyHelper;
 import com.bumptech.glide.test.GlideApp;
 import com.bumptech.glide.test.MockModelLoader;

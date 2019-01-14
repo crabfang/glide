@@ -1,0 +1,17 @@
+package com.bumptech.glide4.load.resource.file;
+
+import com.bumptech.glide4.load.resource.SimpleResource;
+import com.bumptech.glide4.load.engine.Resource;
+
+import java.io.File;
+
+/**
+ * A simple {@link Resource} that wraps a {@link File}.
+ */
+// Public API.
+@SuppressWarnings("WeakerAccess")
+public class FileResource extends SimpleResource<File> {
+  public FileResource(File file) {
+    super(file);
+  }
+}

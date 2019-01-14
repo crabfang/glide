@@ -13,6 +13,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.bumptech.glide.manager.DefaultConnectivityMonitorTest.PermissionConnectivityManager;
 import java.util.List;
+
+import com.bumptech.glide4.manager.ConnectivityMonitor;
+import com.bumptech.glide4.manager.DefaultConnectivityMonitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

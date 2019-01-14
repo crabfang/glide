@@ -4,8 +4,10 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.request.Request;
+import com.bumptech.glide4.RequestManager;
+import com.bumptech.glide4.request.Request;
+import com.bumptech.glide4.request.target.PreloadTarget;
+import com.bumptech.glide4.request.target.SizeReadyCallback;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

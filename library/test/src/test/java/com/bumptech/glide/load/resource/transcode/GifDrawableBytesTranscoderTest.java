@@ -5,11 +5,13 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.gif.GifDrawable;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+
+import com.bumptech.glide4.load.resource.transcode.GifDrawableBytesTranscoder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

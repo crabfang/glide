@@ -12,11 +12,13 @@ import com.bumptech.glide.test.GlideApp;
 import com.bumptech.glide.test.GlideRequests;
 import com.bumptech.glide.test.ResourceIds;
 import com.bumptech.glide.test.TearDownGlide;
+import com.bumptech.glide4.RequestManager;
+import com.bumptech.glide4.request.Request;
 import org.junit.Rule;
 import org.junit.Test;
 
 /**
- * Tests how {@link com.bumptech.glide.request.Request}s behave when the corresponding
+ * Tests how {@link Request}s behave when the corresponding
  * {@link RequestManager} is paused.
  */
 public final class PausedRequestsTest {

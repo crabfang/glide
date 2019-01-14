@@ -4,7 +4,7 @@ import static org.mockito.Mockito.any;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide4.request.target.Target;
 
 /**
  * Mockito matchers for various common classes.

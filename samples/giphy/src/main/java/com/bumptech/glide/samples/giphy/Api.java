@@ -3,7 +3,7 @@ package com.bumptech.glide.samples.giphy;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import com.bumptech.glide.util.Util;
+import com.bumptech.glide4.util.Util;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;

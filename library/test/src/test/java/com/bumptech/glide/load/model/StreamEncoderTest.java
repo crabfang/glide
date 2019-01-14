@@ -2,9 +2,10 @@ package com.bumptech.glide.load.model;
 
 import static org.junit.Assert.assertEquals;
 
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
-import com.bumptech.glide.util.ByteBufferUtil;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
+import com.bumptech.glide4.load.model.StreamEncoder;
+import com.bumptech.glide4.util.ByteBufferUtil;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;

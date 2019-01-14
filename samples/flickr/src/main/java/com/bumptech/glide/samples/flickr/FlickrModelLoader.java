@@ -1,13 +1,13 @@
 package com.bumptech.glide.samples.flickr;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.ModelCache;
-import com.bumptech.glide.load.model.ModelLoader;
-import com.bumptech.glide.load.model.ModelLoaderFactory;
-import com.bumptech.glide.load.model.MultiModelLoaderFactory;
-import com.bumptech.glide.load.model.stream.BaseGlideUrlLoader;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.model.GlideUrl;
+import com.bumptech.glide4.load.model.ModelCache;
+import com.bumptech.glide4.load.model.ModelLoader;
+import com.bumptech.glide4.load.model.ModelLoaderFactory;
+import com.bumptech.glide4.load.model.MultiModelLoaderFactory;
+import com.bumptech.glide4.load.model.stream.BaseGlideUrlLoader;
 import com.bumptech.glide.samples.flickr.api.Api;
 import com.bumptech.glide.samples.flickr.api.Photo;
 import java.io.InputStream;

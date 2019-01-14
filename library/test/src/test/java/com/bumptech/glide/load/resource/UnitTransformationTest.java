@@ -7,12 +7,14 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 
 import android.app.Application;
-import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.engine.Resource;
+import com.bumptech.glide4.load.Transformation;
+import com.bumptech.glide4.load.engine.Resource;
 import com.bumptech.glide.tests.KeyTester;
 import com.bumptech.glide.tests.Util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.bumptech.glide4.load.resource.UnitTransformation;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

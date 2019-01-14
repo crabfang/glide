@@ -11,10 +11,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.load.resource.bitmap.RecyclableBufferedInputStream;
+import com.bumptech.glide4.load.resource.bitmap.RecyclableBufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketTimeoutException;
+
+import com.bumptech.glide4.util.ExceptionCatchingInputStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

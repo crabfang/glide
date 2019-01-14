@@ -1,10 +1,10 @@
 package com.bumptech.glide.samples.svg;
 
 import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.ResourceDecoder;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.resource.SimpleResource;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.ResourceDecoder;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.SimpleResource;
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 import java.io.IOException;

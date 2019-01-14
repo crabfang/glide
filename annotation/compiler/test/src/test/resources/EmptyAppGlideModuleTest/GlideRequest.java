@@ -25,6 +25,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy;
 import com.bumptech.glide.request.BaseRequestOptions;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide4.annotation.GlideExtension;
+import com.bumptech.glide4.annotation.GlideOption;
+
 import java.io.File;
 import java.lang.Class;
 import java.lang.Cloneable;
@@ -40,8 +43,8 @@ import java.net.URL;
 /**
  * Contains all public methods from {@link RequestBuilder<TranscodeType>}, all options from
  * {@link com.bumptech.glide.request.RequestOptions} and all generated options from
- * {@link com.bumptech.glide.annotation.GlideOption} in annotated methods in
- * {@link com.bumptech.glide.annotation.GlideExtension} annotated classes.
+ * {@link GlideOption} in annotated methods in
+ * {@link GlideExtension} annotated classes.
  *
  * <p>Generated code, do not modify.
  *

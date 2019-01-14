@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.util.LruCache;
+import com.bumptech.glide4.util.LruCache;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

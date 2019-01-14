@@ -10,10 +10,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.Registry;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.GlideBuilder;
+import com.bumptech.glide4.Registry;
 import java.util.List;
+
+import com.bumptech.glide4.module.GlideModule;
+import com.bumptech.glide4.module.ManifestParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

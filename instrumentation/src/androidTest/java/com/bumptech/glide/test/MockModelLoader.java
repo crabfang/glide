@@ -3,15 +3,15 @@ package com.bumptech.glide.test;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import androidx.test.InstrumentationRegistry;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.ModelLoader;
-import com.bumptech.glide.load.model.ModelLoaderFactory;
-import com.bumptech.glide.load.model.MultiModelLoaderFactory;
-import com.bumptech.glide.signature.ObjectKey;
+import com.bumptech.glide4.Glide;
+import com.bumptech.glide4.Priority;
+import com.bumptech.glide4.load.DataSource;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.data.DataFetcher;
+import com.bumptech.glide4.load.model.ModelLoader;
+import com.bumptech.glide4.load.model.ModelLoaderFactory;
+import com.bumptech.glide4.load.model.MultiModelLoaderFactory;
+import com.bumptech.glide4.signature.ObjectKey;
 
 public final class MockModelLoader<ModelT, DataT> implements ModelLoader<ModelT, DataT> {
   private final ModelT model;

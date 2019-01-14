@@ -1,6 +1,6 @@
 package com.bumptech.glide.tests;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide4.Glide;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;

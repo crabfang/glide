@@ -2,9 +2,10 @@ package com.bumptech.glide.load.resource.file;
 
 import static org.junit.Assert.assertEquals;
 
-import com.bumptech.glide.load.Options;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide4.load.Options;
+import com.bumptech.glide4.load.engine.Resource;
+import com.bumptech.glide4.load.resource.file.FileDecoder;
+import com.bumptech.glide4.util.Preconditions;
 import java.io.File;
 import java.io.IOException;
 import org.junit.Before;
