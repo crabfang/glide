@@ -23,7 +23,7 @@ import javax.lang.model.element.TypeElement;
  * <pre>
  * <code>
  *  {@literal @Index(}
- *      modules = "com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule"
+ *      modules = "com.bumptech.glide4.integration.okhttp3.OkHttpLibraryGlideModule"
  *  )
  *  public class Indexer_GlideModule_com_bumptech_glide_integration_okhttp3_OkHttpLibraryGlideModule
  *  {

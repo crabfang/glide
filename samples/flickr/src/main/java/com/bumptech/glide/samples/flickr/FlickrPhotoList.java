@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide4.ListPreloader;
 import com.bumptech.glide4.RequestBuilder;
-import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader;
+import com.bumptech.glide4.integration.recyclerview.RecyclerViewPreloader;
 import com.bumptech.glide4.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.samples.flickr.api.Api;
 import com.bumptech.glide.samples.flickr.api.Photo;

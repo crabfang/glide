@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.bumptech.glide4.ListPreloader;
 import com.bumptech.glide4.RequestBuilder;
-import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader;
+import com.bumptech.glide4.integration.recyclerview.RecyclerViewPreloader;
 import com.bumptech.glide4.util.Preconditions;
 import com.bumptech.glide4.util.ViewPreloadSizeProvider;
 import java.util.Collections;

@@ -17,7 +17,7 @@ import com.bumptech.glide4.Glide;
 import com.bumptech.glide4.ListPreloader;
 import com.bumptech.glide4.Priority;
 import com.bumptech.glide4.RequestBuilder;
-import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader;
+import com.bumptech.glide4.integration.recyclerview.RecyclerViewPreloader;
 import com.bumptech.glide.samples.flickr.api.Api;
 import com.bumptech.glide.samples.flickr.api.Photo;
 import com.bumptech.glide4.util.FixedPreloadSizeProvider;

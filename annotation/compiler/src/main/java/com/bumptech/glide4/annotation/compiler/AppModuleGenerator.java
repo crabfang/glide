@@ -43,7 +43,7 @@ import javax.lang.model.element.TypeElement;
  *        android.util.Log.d("Glide", "Discovered AppGlideModule from annotation:"
  *            + " com.bumptech.glide.samples.giphy.GiphyGlideModule");
  *        android.util.Log.d("Glide", "Discovered LibraryGlideModule from annotation:"
- *            + "com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule");
+ *            + "com.bumptech.glide4.integration.okhttp3.OkHttpLibraryGlideModule");
  *      }
  *    }
  *
@@ -56,7 +56,7 @@ import javax.lang.model.element.TypeElement;
  *    {@literal @java.lang.Override}
  *    public void registerComponents(android.content.Context context,
  *        com.bumptech.glide.Registry registry) {
- *      new com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule()
+ *      new com.bumptech.glide4.integration.okhttp3.OkHttpLibraryGlideModule()
  *          .registerComponents(context, registry);
  *      appGlideModule.registerComponents(context, registry);
  *    }
