@@ -1,212 +1,487 @@
 package com.bumptech.glide.load.engine;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
+import android.support.v4.util.Pools;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Key;
+import com.bumptech.glide.load.engine.executor.GlideExecutor;
 import com.bumptech.glide.request.ResourceCallback;
-import com.bumptech.glide.util.Util;
-
+import com.bumptech.glide.util.Executors;
+import com.bumptech.glide.util.Preconditions;
+import com.bumptech.glide.util.Synthetic;
+import com.bumptech.glide.util.pool.FactoryPools.Poolable;
+import com.bumptech.glide.util.pool.StateVerifier;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * A class that manages a load by adding and removing callbacks for for the load and notifying callbacks when the
- * load completes.
+ * A class that manages a load by adding and removing callbacks for for the load and notifying
+ * callbacks when the load completes.
  */
-class EngineJob implements EngineRunnable.EngineRunnableManager {
-    private static final EngineResourceFactory DEFAULT_FACTORY = new EngineResourceFactory();
-    private static final Handler MAIN_THREAD_HANDLER = new Handler(Looper.getMainLooper(), new MainThreadCallback());
+class EngineJob<R> implements DecodeJob.Callback<R>,
+    Poolable {
+  private static final EngineResourceFactory DEFAULT_FACTORY = new EngineResourceFactory();
 
-    private static final int MSG_COMPLETE = 1;
-    private static final int MSG_EXCEPTION = 2;
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  final ResourceCallbacksAndExecutors cbs = new ResourceCallbacksAndExecutors();
 
-    private final List<ResourceCallback> cbs = new ArrayList<ResourceCallback>();
-    private final EngineResourceFactory engineResourceFactory;
-    private final EngineJobListener listener;
-    private final Key key;
-    private final ExecutorService diskCacheService;
-    private final ExecutorService sourceService;
-    private final boolean isCacheable;
+  private final StateVerifier stateVerifier = StateVerifier.newInstance();
+  private final Pools.Pool<EngineJob<?>> pool;
+  private final EngineResourceFactory engineResourceFactory;
+  private final EngineJobListener listener;
+  private final GlideExecutor diskCacheExecutor;
+  private final GlideExecutor sourceExecutor;
+  private final GlideExecutor sourceUnlimitedExecutor;
+  private final GlideExecutor animationExecutor;
+  private final AtomicInteger pendingCallbacks = new AtomicInteger();
 
-    private boolean isCancelled;
-    // Either resource or exception (particularly exception) may be returned to us null, so use booleans to track if
-    // we've received them instead of relying on them to be non-null. See issue #180.
-    private Resource<?> resource;
-    private boolean hasResource;
-    private Exception exception;
-    private boolean hasException;
-    // A set of callbacks that are removed while we're notifying other callbacks of a change in status.
-    private Set<ResourceCallback> ignoredCallbacks;
-    private EngineRunnable engineRunnable;
-    private EngineResource<?> engineResource;
+  private Key key;
+  private boolean isCacheable;
+  private boolean useUnlimitedSourceGeneratorPool;
+  private boolean useAnimationPool;
+  private boolean onlyRetrieveFromCache;
+  private Resource<?> resource;
 
-    private volatile Future<?> future;
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  DataSource dataSource;
 
-    public EngineJob(Key key, ExecutorService diskCacheService, ExecutorService sourceService, boolean isCacheable,
-            EngineJobListener listener) {
-        this(key, diskCacheService, sourceService, isCacheable, listener, DEFAULT_FACTORY);
+  private boolean hasResource;
+
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  GlideException exception;
+
+  private boolean hasLoadFailed;
+
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  EngineResource<?> engineResource;
+
+  private DecodeJob<R> decodeJob;
+
+  // Checked primarily on the main thread, but also on other threads in reschedule.
+  private volatile boolean isCancelled;
+
+  EngineJob(
+      GlideExecutor diskCacheExecutor,
+      GlideExecutor sourceExecutor,
+      GlideExecutor sourceUnlimitedExecutor,
+      GlideExecutor animationExecutor,
+      EngineJobListener listener,
+      Pools.Pool<EngineJob<?>> pool) {
+    this(
+        diskCacheExecutor,
+        sourceExecutor,
+        sourceUnlimitedExecutor,
+        animationExecutor,
+        listener,
+        pool,
+        DEFAULT_FACTORY);
+  }
+
+  @VisibleForTesting
+  EngineJob(
+      GlideExecutor diskCacheExecutor,
+      GlideExecutor sourceExecutor,
+      GlideExecutor sourceUnlimitedExecutor,
+      GlideExecutor animationExecutor,
+      EngineJobListener listener,
+      Pools.Pool<EngineJob<?>> pool,
+      EngineResourceFactory engineResourceFactory) {
+    this.diskCacheExecutor = diskCacheExecutor;
+    this.sourceExecutor = sourceExecutor;
+    this.sourceUnlimitedExecutor = sourceUnlimitedExecutor;
+    this.animationExecutor = animationExecutor;
+    this.listener = listener;
+    this.pool = pool;
+    this.engineResourceFactory = engineResourceFactory;
+  }
+
+  @VisibleForTesting
+  synchronized EngineJob<R> init(
+      Key key,
+      boolean isCacheable,
+      boolean useUnlimitedSourceGeneratorPool,
+      boolean useAnimationPool,
+      boolean onlyRetrieveFromCache) {
+    this.key = key;
+    this.isCacheable = isCacheable;
+    this.useUnlimitedSourceGeneratorPool = useUnlimitedSourceGeneratorPool;
+    this.useAnimationPool = useAnimationPool;
+    this.onlyRetrieveFromCache = onlyRetrieveFromCache;
+    return this;
+  }
+
+  public synchronized void start(DecodeJob<R> decodeJob) {
+    this.decodeJob = decodeJob;
+    GlideExecutor executor = decodeJob.willDecodeFromCache()
+        ? diskCacheExecutor
+        : getActiveSourceExecutor();
+    executor.execute(decodeJob);
+  }
+
+  synchronized void addCallback(final ResourceCallback cb, Executor callbackExecutor) {
+    stateVerifier.throwIfRecycled();
+    cbs.add(cb, callbackExecutor);
+    if (hasResource) {
+      // Acquire early so that the resource isn't recycled while the Runnable below is still sitting
+      // in the executors queue.
+      incrementPendingCallbacks(1);
+      callbackExecutor.execute(new CallResourceReady(cb));
+    } else if (hasLoadFailed) {
+      incrementPendingCallbacks(1);
+      callbackExecutor.execute(new CallLoadFailed(cb));
+    } else {
+      Preconditions.checkArgument(!isCancelled, "Cannot add callbacks to a cancelled EngineJob");
+    }
+  }
+
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  synchronized void callCallbackOnResourceReady(ResourceCallback cb) {
+    try {
+      // This is overly broad, some Glide code is actually called here, but it's much
+      // simpler to encapsulate here than to do so at the actual call point in the
+      // Request implementation.
+      cb.onResourceReady(engineResource, dataSource);
+    } catch (Throwable t) {
+      throw new CallbackException(t);
+    }
+  }
+
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  synchronized void callCallbackOnLoadFailed(ResourceCallback cb) {
+    // This is overly broad, some Glide code is actually called here, but it's much
+    // simpler to encapsulate here than to do so at the actual call point in the Request
+    // implementation.
+    try {
+      cb.onLoadFailed(exception);
+    } catch (Throwable t) {
+      throw new CallbackException(t);
+    }
+  }
+
+  synchronized void removeCallback(ResourceCallback cb) {
+    stateVerifier.throwIfRecycled();
+    cbs.remove(cb);
+    if (cbs.isEmpty()) {
+      cancel();
+      boolean isFinishedRunning = hasResource || hasLoadFailed;
+      if (isFinishedRunning && pendingCallbacks.get() == 0) {
+        release();
+      }
+    }
+  }
+
+  boolean onlyRetrieveFromCache() {
+    return onlyRetrieveFromCache;
+  }
+
+  private GlideExecutor getActiveSourceExecutor() {
+    return useUnlimitedSourceGeneratorPool
+        ? sourceUnlimitedExecutor : (useAnimationPool ? animationExecutor : sourceExecutor);
+  }
+
+  // Exposed for testing.
+  void cancel() {
+    if (isDone()) {
+      return;
     }
 
-    public EngineJob(Key key, ExecutorService diskCacheService, ExecutorService sourceService, boolean isCacheable,
-            EngineJobListener listener, EngineResourceFactory engineResourceFactory) {
-        this.key = key;
-        this.diskCacheService = diskCacheService;
-        this.sourceService = sourceService;
-        this.isCacheable = isCacheable;
-        this.listener = listener;
-        this.engineResourceFactory = engineResourceFactory;
+    isCancelled = true;
+    decodeJob.cancel();
+    listener.onEngineJobCancelled(this, key);
+  }
+
+  // Exposed for testing.
+  synchronized boolean isCancelled() {
+    return isCancelled;
+  }
+
+  private boolean isDone() {
+    return hasLoadFailed || hasResource || isCancelled;
+  }
+
+  // We have to post Runnables in a loop. Typically there will be very few callbacks. AccessorMethod
+  // seems to be a false positive
+  @SuppressWarnings(
+          {"WeakerAccess", "PMD.AvoidInstantiatingObjectsInLoops", "PMD.AccessorMethodGeneration"})
+  @Synthetic
+  void notifyCallbacksOfResult() {
+    ResourceCallbacksAndExecutors copy;
+    Key localKey;
+    EngineResource<?> localResource;
+    synchronized (this) {
+      stateVerifier.throwIfRecycled();
+      if (isCancelled) {
+        // TODO: Seems like we might as well put this in the memory cache instead of just recycling
+        // it since we've gotten this far...
+        resource.recycle();
+        release();
+        return;
+      } else if (cbs.isEmpty()) {
+        throw new IllegalStateException("Received a resource without any callbacks to notify");
+      } else if (hasResource) {
+        throw new IllegalStateException("Already have resource");
+      }
+      engineResource = engineResourceFactory.build(resource, isCacheable);
+      // Hold on to resource for duration of our callbacks below so we don't recycle it in the
+      // middle of notifying if it synchronously released by one of the callbacks. Acquire it under
+      // a lock here so that any newly added callback that executes before the next locked section
+      // below can't recycle the resource before we call the callbacks.
+      hasResource = true;
+      copy = cbs.copy();
+      incrementPendingCallbacks(copy.size() + 1);
+
+      localKey = key;
+      localResource = engineResource;
     }
 
-    public void start(EngineRunnable engineRunnable) {
-        this.engineRunnable = engineRunnable;
-        future = diskCacheService.submit(engineRunnable);
+    listener.onEngineJobComplete(this, localKey, localResource);
+
+    for (final ResourceCallbackAndExecutor entry : copy) {
+      entry.executor.execute(new CallResourceReady(entry.cb));
     }
+    decrementPendingCallbacks();
+  }
 
-    @Override
-    public void submitForSource(EngineRunnable runnable) {
-        future = sourceService.submit(runnable);
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  synchronized void incrementPendingCallbacks(int count) {
+    Preconditions.checkArgument(isDone(), "Not yet complete!");
+    if (pendingCallbacks.getAndAdd(count) == 0 && engineResource != null) {
+      engineResource.acquire();
     }
+  }
 
-    public void addCallback(ResourceCallback cb) {
-        Util.assertMainThread();
-        if (hasResource) {
-            cb.onResourceReady(engineResource);
-        } else if (hasException) {
-            cb.onException(exception);
-        } else {
-            cbs.add(cb);
-        }
-    }
-
-    public void removeCallback(ResourceCallback cb) {
-        Util.assertMainThread();
-        if (hasResource || hasException) {
-            addIgnoredCallback(cb);
-        } else {
-            cbs.remove(cb);
-            if (cbs.isEmpty()) {
-                cancel();
-            }
-        }
-    }
-
-    // We cannot remove callbacks while notifying our list of callbacks directly because doing so would cause a
-    // ConcurrentModificationException. However, we need to obey the cancellation request such that if notifying a
-    // callback early in the callbacks list cancels a callback later in the request list, the cancellation for the later
-    // request is still obeyed. Using a set of ignored callbacks allows us to avoid the exception while still meeting
-    // the requirement.
-    private void addIgnoredCallback(ResourceCallback cb) {
-        if (ignoredCallbacks == null) {
-            ignoredCallbacks = new HashSet<ResourceCallback>();
-        }
-        ignoredCallbacks.add(cb);
-    }
-
-    private boolean isInIgnoredCallbacks(ResourceCallback cb) {
-        return ignoredCallbacks != null && ignoredCallbacks.contains(cb);
-    }
-
-    // Exposed for testing.
-    void cancel() {
-        if (hasException || hasResource || isCancelled) {
-            return;
-        }
-        engineRunnable.cancel();
-        Future currentFuture = future;
-        if (currentFuture != null) {
-            currentFuture.cancel(true);
-        }
-        isCancelled = true;
-        listener.onEngineJobCancelled(this, key);
-    }
-
-    // Exposed for testing.
-    boolean isCancelled() {
-        return isCancelled;
-    }
-
-    @Override
-    public void onResourceReady(final Resource<?> resource) {
-        this.resource = resource;
-        MAIN_THREAD_HANDLER.obtainMessage(MSG_COMPLETE, this).sendToTarget();
-    }
-
-    private void handleResultOnMainThread() {
-        if (isCancelled) {
-            resource.recycle();
-            return;
-        } else if (cbs.isEmpty()) {
-            throw new IllegalStateException("Received a resource without any callbacks to notify");
-        }
-        engineResource = engineResourceFactory.build(resource, isCacheable);
-        hasResource = true;
-
-        // Hold on to resource for duration of request so we don't recycle it in the middle of notifying if it
-        // synchronously released by one of the callbacks.
-        engineResource.acquire();
-        listener.onEngineJobComplete(key, engineResource);
-
-        for (ResourceCallback cb : cbs) {
-            if (!isInIgnoredCallbacks(cb)) {
-                engineResource.acquire();
-                cb.onResourceReady(engineResource);
-            }
-        }
-        // Our request is complete, so we can release the resource.
+  @SuppressWarnings("WeakerAccess")
+  @Synthetic
+  synchronized void decrementPendingCallbacks() {
+    stateVerifier.throwIfRecycled();
+    Preconditions.checkArgument(isDone(), "Not yet complete!");
+    int decremented = pendingCallbacks.decrementAndGet();
+    Preconditions.checkArgument(decremented >= 0, "Can't decrement below 0");
+    if (decremented == 0) {
+      if (engineResource != null) {
         engineResource.release();
+      }
+
+      release();
+    }
+  }
+
+  private synchronized void release() {
+    if (key == null) {
+      throw new IllegalArgumentException();
+    }
+    cbs.clear();
+    key = null;
+    engineResource = null;
+    resource = null;
+    hasLoadFailed = false;
+    isCancelled = false;
+    hasResource = false;
+    decodeJob.release(/*isRemovedFromQueue=*/ false);
+    decodeJob = null;
+    exception = null;
+    dataSource = null;
+    pool.release(this);
+  }
+
+  @Override
+  public void onResourceReady(Resource<R> resource, DataSource dataSource) {
+    synchronized (this) {
+      this.resource = resource;
+      this.dataSource = dataSource;
+    }
+    notifyCallbacksOfResult();
+  }
+
+  @Override
+  public void onLoadFailed(GlideException e) {
+    synchronized (this) {
+      this.exception = e;
+    }
+    notifyCallbacksOfException();
+  }
+
+  @Override
+  public void reschedule(DecodeJob<?> job) {
+    // Even if the job is cancelled here, it still needs to be scheduled so that it can clean itself
+    // up.
+    getActiveSourceExecutor().execute(job);
+  }
+
+  // We have to post Runnables in a loop. Typically there will be very few callbacks. Acessor method
+  // warning seems to be false positive.
+  @SuppressWarnings(
+          {"WeakerAccess", "PMD.AvoidInstantiatingObjectsInLoops", "PMD.AccessorMethodGeneration"})
+  @Synthetic
+  void notifyCallbacksOfException() {
+    ResourceCallbacksAndExecutors copy;
+    Key localKey;
+    synchronized (this) {
+      stateVerifier.throwIfRecycled();
+      if (isCancelled) {
+        release();
+        return;
+      } else if (cbs.isEmpty()) {
+        throw new IllegalStateException("Received an exception without any callbacks to notify");
+      } else if (hasLoadFailed) {
+        throw new IllegalStateException("Already failed once");
+      }
+      hasLoadFailed = true;
+
+      localKey = key;
+
+      copy = cbs.copy();
+      // One for each callback below, plus one for ourselves so that we finish if a callback runs on
+      // another thread before we finish scheduling all of them.
+      incrementPendingCallbacks(copy.size() + 1);
+    }
+
+    listener.onEngineJobComplete(this, localKey, /*resource=*/ null);
+
+    for (ResourceCallbackAndExecutor entry : copy) {
+      entry.executor.execute(new CallLoadFailed(entry.cb));
+    }
+    decrementPendingCallbacks();
+  }
+
+  @NonNull
+  @Override
+  public StateVerifier getVerifier() {
+    return stateVerifier;
+  }
+
+  private class CallLoadFailed implements Runnable {
+
+    private final ResourceCallback cb;
+
+    CallLoadFailed(ResourceCallback cb) {
+      this.cb = cb;
     }
 
     @Override
-    public void onException(final Exception e) {
-        this.exception = e;
-        MAIN_THREAD_HANDLER.obtainMessage(MSG_EXCEPTION, this).sendToTarget();
+    public void run() {
+      synchronized (EngineJob.this) {
+        if (cbs.contains(cb)) {
+          callCallbackOnLoadFailed(cb);
+        }
+
+        decrementPendingCallbacks();
+      }
+    }
+  }
+
+  private class CallResourceReady implements Runnable {
+
+    private final ResourceCallback cb;
+
+    CallResourceReady(ResourceCallback cb) {
+      this.cb = cb;
     }
 
-    private void handleExceptionOnMainThread() {
-        if (isCancelled) {
-            return;
-        } else if (cbs.isEmpty()) {
-            throw new IllegalStateException("Received an exception without any callbacks to notify");
+    @Override
+    public void run() {
+      synchronized (EngineJob.this) {
+        if (cbs.contains(cb)) {
+          // Acquire for this particular callback.
+          engineResource.acquire();
+          callCallbackOnResourceReady(cb);
+          removeCallback(cb);
         }
-        hasException = true;
+        decrementPendingCallbacks();
+      }
+    }
+  }
 
-        listener.onEngineJobComplete(key, null);
+  static final class ResourceCallbacksAndExecutors
+      implements Iterable<ResourceCallbackAndExecutor> {
+    private final List<ResourceCallbackAndExecutor> callbacksAndExecutors;
 
-        for (ResourceCallback cb : cbs) {
-            if (!isInIgnoredCallbacks(cb)) {
-                cb.onException(exception);
-            }
-        }
+    ResourceCallbacksAndExecutors() {
+      this(new ArrayList<ResourceCallbackAndExecutor>(2));
     }
 
-    // Visible for testing.
-    static class EngineResourceFactory {
-        public <R> EngineResource<R> build(Resource<R> resource, boolean isMemoryCacheable) {
-            return new EngineResource<R>(resource, isMemoryCacheable);
-        }
+    ResourceCallbacksAndExecutors(List<ResourceCallbackAndExecutor> callbacksAndExecutors) {
+      this.callbacksAndExecutors = callbacksAndExecutors;
     }
 
-    private static class MainThreadCallback implements Handler.Callback {
-
-        @Override
-        public boolean handleMessage(Message message) {
-            if (MSG_COMPLETE == message.what || MSG_EXCEPTION == message.what) {
-                EngineJob job = (EngineJob) message.obj;
-                if (MSG_COMPLETE == message.what) {
-                    job.handleResultOnMainThread();
-                } else {
-                    job.handleExceptionOnMainThread();
-                }
-                return true;
-            }
-
-            return false;
-        }
+    void add(ResourceCallback cb, Executor executor) {
+      callbacksAndExecutors.add(new ResourceCallbackAndExecutor(cb, executor));
     }
+
+    void remove(ResourceCallback cb) {
+      callbacksAndExecutors.remove(defaultCallbackAndExecutor(cb));
+    }
+
+    boolean contains(ResourceCallback cb) {
+      return callbacksAndExecutors.contains(defaultCallbackAndExecutor(cb));
+    }
+
+    boolean isEmpty() {
+      return callbacksAndExecutors.isEmpty();
+    }
+
+    int size() {
+      return callbacksAndExecutors.size();
+    }
+
+    void clear() {
+      callbacksAndExecutors.clear();
+    }
+
+    ResourceCallbacksAndExecutors copy() {
+      return new ResourceCallbacksAndExecutors(new ArrayList<>(callbacksAndExecutors));
+    }
+
+    private static ResourceCallbackAndExecutor defaultCallbackAndExecutor(ResourceCallback cb) {
+      return new ResourceCallbackAndExecutor(cb, Executors.directExecutor());
+    }
+
+    @NonNull
+    @Override
+    public Iterator<ResourceCallbackAndExecutor> iterator() {
+      return callbacksAndExecutors.iterator();
+    }
+  }
+
+  static final class ResourceCallbackAndExecutor {
+    final ResourceCallback cb;
+    final Executor executor;
+
+    ResourceCallbackAndExecutor(ResourceCallback cb, Executor executor) {
+      this.cb = cb;
+      this.executor = executor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (o instanceof ResourceCallbackAndExecutor) {
+        ResourceCallbackAndExecutor other = (ResourceCallbackAndExecutor) o;
+        return cb.equals(other.cb);
+      }
+      return false;
+    }
+
+    @Override
+    public int hashCode() {
+      return cb.hashCode();
+    }
+  }
+
+  @VisibleForTesting
+  static class EngineResourceFactory {
+    public <R> EngineResource<R> build(Resource<R> resource, boolean isMemoryCacheable) {
+      return new EngineResource<>(resource, isMemoryCacheable, /*isRecyclable=*/ true);
+    }
+  }
 }

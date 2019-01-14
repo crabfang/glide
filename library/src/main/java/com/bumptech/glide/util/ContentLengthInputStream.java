@@ -1,8 +1,9 @@
 package com.bumptech.glide.util;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,14 +16,21 @@ public final class ContentLengthInputStream extends FilterInputStream {
   private static final String TAG = "ContentLengthStream";
   private static final int UNKNOWN = -1;
 
-  private final int contentLength;
+  private final long contentLength;
   private int readSoFar;
 
-  public static InputStream obtain(InputStream other, String contentLengthHeader) {
-    return new ContentLengthInputStream(other, parseContentLength(contentLengthHeader));
+  @NonNull
+  public static InputStream obtain(@NonNull InputStream other,
+      @Nullable String contentLengthHeader) {
+    return obtain(other, parseContentLength(contentLengthHeader));
   }
 
-  private static int parseContentLength(String contentLengthHeader) {
+  @NonNull
+  public static InputStream obtain(@NonNull InputStream other, long contentLength) {
+    return new ContentLengthInputStream(other, contentLength);
+  }
+
+  private static int parseContentLength(@Nullable String contentLengthHeader) {
     int result = UNKNOWN;
     if (!TextUtils.isEmpty(contentLengthHeader)) {
       try {
@@ -36,19 +44,21 @@ public final class ContentLengthInputStream extends FilterInputStream {
     return result;
   }
 
-  ContentLengthInputStream(InputStream in, int contentLength) {
+  private ContentLengthInputStream(@NonNull InputStream in, long contentLength) {
     super(in);
     this.contentLength = contentLength;
   }
 
   @Override
   public synchronized int available() throws IOException {
-    return Math.max(contentLength - readSoFar, in.available());
+    return (int) Math.max(contentLength - readSoFar, in.available());
  }
 
   @Override
   public synchronized int read() throws IOException {
-    return checkReadSoFarOrThrow(super.read());
+    int value = super.read();
+    checkReadSoFarOrThrow(value >= 0 ? 1 : -1);
+    return value;
   }
 
   @Override
@@ -57,7 +67,8 @@ public final class ContentLengthInputStream extends FilterInputStream {
   }
 
   @Override
-  public synchronized int read(byte[] buffer, int byteOffset, int byteCount) throws IOException {
+  public synchronized int read(byte[] buffer, int byteOffset, int byteCount)
+      throws IOException {
     return checkReadSoFarOrThrow(super.read(buffer, byteOffset, byteCount));
   }
 
