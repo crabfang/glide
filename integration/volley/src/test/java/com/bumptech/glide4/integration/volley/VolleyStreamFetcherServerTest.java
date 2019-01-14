@@ -1,6 +1,6 @@
 package com.bumptech.glide4.integration.volley;
 
-import static com.bumptech.glide.testutil.TestUtil.assertStreamOf;
+import static com.bumptech.glide4.testutil.TestUtil.assertStreamOf;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.isA;

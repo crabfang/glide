@@ -1,4 +1,4 @@
-package com.bumptech.glide.testutil;
+package com.bumptech.glide4.testutil;
 
 import static com.google.common.truth.Truth.assertThat;
 

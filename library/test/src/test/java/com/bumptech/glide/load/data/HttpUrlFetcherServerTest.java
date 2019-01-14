@@ -11,7 +11,7 @@ import com.bumptech.glide4.load.data.DataFetcher;
 import com.bumptech.glide4.load.data.HttpUrlFetcher;
 import com.bumptech.glide4.load.model.GlideUrl;
 import com.bumptech.glide4.load.model.Headers;
-import com.bumptech.glide.testutil.TestUtil;
+import com.bumptech.glide4.testutil.TestUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;

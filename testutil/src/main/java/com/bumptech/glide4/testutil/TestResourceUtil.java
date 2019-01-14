@@ -1,4 +1,4 @@
-package com.bumptech.glide.testutil;
+package com.bumptech.glide4.testutil;
 
 import java.io.InputStream;
 

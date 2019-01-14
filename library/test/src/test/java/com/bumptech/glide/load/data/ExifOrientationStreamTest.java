@@ -6,7 +6,7 @@ import com.bumptech.glide4.load.data.ExifOrientationStream;
 import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
 import com.bumptech.glide4.load.engine.bitmap_recycle.LruArrayPool;
 import com.bumptech.glide4.load.resource.bitmap.DefaultImageHeaderParser;
-import com.bumptech.glide.testutil.TestResourceUtil;
+import com.bumptech.glide4.testutil.TestResourceUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import org.junit.Before;

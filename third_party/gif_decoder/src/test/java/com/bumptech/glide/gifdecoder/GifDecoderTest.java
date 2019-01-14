@@ -7,7 +7,7 @@ import static org.robolectric.Shadows.shadowOf;
 
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.testutil.TestUtil;
+import com.bumptech.glide4.testutil.TestUtil;
 import java.io.IOException;
 import java.util.Arrays;
 

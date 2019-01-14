@@ -61,7 +61,7 @@ import com.bumptech.glide4.request.transition.Transition;
 import com.bumptech.glide.tests.GlideShadowLooper;
 import com.bumptech.glide.tests.TearDownGlide;
 import com.bumptech.glide.tests.Util;
-import com.bumptech.glide.testutil.TestResourceUtil;
+import com.bumptech.glide4.testutil.TestResourceUtil;
 import com.bumptech.glide4.util.Preconditions;
 import java.io.ByteArrayInputStream;
 import java.io.File;
