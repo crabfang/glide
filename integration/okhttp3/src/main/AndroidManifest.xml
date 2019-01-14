@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.bumptech.glide4.integration.okhttp">
+          package="com.bumptech.glide4.integration.okhttp3">
 
     <application>
         <meta-data
             android:name="com.bumptech.glide4.integration.okhttp3.OkHttpGlideModule"
-            android:value="GlideModule"/>
+            android:value="Glide4Module"/>
     </application>
 </manifest>

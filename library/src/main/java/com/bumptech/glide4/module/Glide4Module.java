@@ -10,13 +10,13 @@ import com.bumptech.glide4.load.model.ModelLoader;
  * {@link GlideBuilder} and registering
  * {@link ModelLoader ModelLoaders}.
  *
- * <p> To use this interface: <ol> <li> Implement the GlideModule interface in a class with public
+ * <p> To use this interface: <ol> <li> Implement the Glide4Module interface in a class with public
  * visibility, calling
  * {@link Registry#prepend(Class, Class, ResourceDecoder)} for each
  * {@link ModelLoader} you'd like to register:
  * <pre>
  *                  <code>
- *                      public class FlickrGlideModule implements GlideModule {
+ *                      public class FlickrGlideModule implements Glide4Module {
  *                          {@literal @}Override
  *                          public void applyOptions(Context context, GlideBuilder builder) {
  *                              builder.setDecodeFormat(DecodeFormat.ALWAYS_ARGB_8888);
@@ -35,13 +35,13 @@ import com.bumptech.glide4.load.model.ModelLoader;
  *                      -keepnames class * com.bumptech.glide.samples.flickr.FlickrGlideModule
  *                  }
  *              </pre>
- * </li> <li> Add a metadata tag to your AndroidManifest.xml with your GlideModule implementation's
- * fully qualified classname as the key, and {@code GlideModule} as the value:
+ * </li> <li> Add a metadata tag to your AndroidManifest.xml with your Glide4Module implementation's
+ * fully qualified classname as the key, and {@code Glide4Module} as the value:
  * <pre>
  *                 {@code
  *                      <meta-data
  *                          android:name="com.bumptech.glide.samples.flickr.FlickrGlideModule"
- *                          android:value="GlideModule" />
+ *                          android:value="Glide4Module" />
  *                 }
  *             </pre>
  * </li> </ol> </p>
@@ -58,4 +58,4 @@ import com.bumptech.glide4.load.model.ModelLoader;
  * {@link AppGlideModule}.
  */
 @Deprecated
-public interface GlideModule extends RegistersComponents, AppliesOptions { }
+public interface Glide4Module extends RegistersComponents, AppliesOptions { }

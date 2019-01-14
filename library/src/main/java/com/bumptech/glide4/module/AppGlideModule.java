@@ -16,7 +16,7 @@ import com.bumptech.glide4.annotation.Excludes;
  *
  * <p>Classes that extend {@link AppGlideModule} can optionally be annotated with
  * {@link Excludes} to optionally exclude one or more
- * {@link LibraryGlideModule} and/or {@link GlideModule} classes.
+ * {@link LibraryGlideModule} and/or {@link Glide4Module} classes.
  *
  * <p>Once an application has migrated itself and all libraries it depends on to use Glide's
  * annotation processor, {@link AppGlideModule} implementations should override
@@ -26,7 +26,7 @@ import com.bumptech.glide4.annotation.Excludes;
 @SuppressWarnings("deprecation")
 public abstract class AppGlideModule extends LibraryGlideModule implements AppliesOptions {
   /**
-   * Returns {@code true} if Glide should check the AndroidManifest for {@link GlideModule}s.
+   * Returns {@code true} if Glide should check the AndroidManifest for {@link Glide4Module}s.
    *
    * <p>Implementations should return {@code false} after they and their dependencies have migrated
    * to Glide's annotation processor.

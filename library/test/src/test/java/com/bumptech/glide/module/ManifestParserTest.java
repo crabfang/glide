@@ -15,7 +15,7 @@ import com.bumptech.glide4.GlideBuilder;
 import com.bumptech.glide4.Registry;
 import java.util.List;
 
-import com.bumptech.glide4.module.GlideModule;
+import com.bumptech.glide4.module.Glide4Module;
 import com.bumptech.glide4.module.ManifestParser;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ import org.robolectric.annotation.Config;
 @Config(manifest = Config.NONE, sdk = 18)
 @SuppressWarnings("deprecation")
 public class ManifestParserTest {
-  private static final String MODULE_VALUE = "GlideModule";
+  private static final String MODULE_VALUE = "Glide4Module";
 
   @Mock private Context context;
   private ManifestParser parser;
@@ -61,7 +61,7 @@ public class ManifestParserTest {
   public void testParse_withSingleValidModuleName_returnsListContainingModule() {
     addModuleToManifest(TestModule1.class);
 
-    List<GlideModule> modules = parser.parse();
+    List<Glide4Module> modules = parser.parse();
     assertThat(modules).hasSize(1);
     assertThat(modules.get(0)).isInstanceOf(TestModule1.class);
   }
@@ -71,7 +71,7 @@ public class ManifestParserTest {
     addModuleToManifest(TestModule1.class);
     addModuleToManifest(TestModule2.class);
 
-    List<GlideModule> modules = parser.parse();
+    List<Glide4Module> modules = parser.parse();
     assertThat(modules).hasSize(2);
 
     assertThat(modules).contains(new TestModule1());
@@ -116,7 +116,7 @@ public class ManifestParserTest {
 
   private static class InvalidClass { }
 
-  public static class TestModule1 implements GlideModule {
+  public static class TestModule1 implements Glide4Module {
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
     }
@@ -136,7 +136,7 @@ public class ManifestParserTest {
     }
   }
 
-  public static class TestModule2 implements GlideModule {
+  public static class TestModule2 implements Glide4Module {
 
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {

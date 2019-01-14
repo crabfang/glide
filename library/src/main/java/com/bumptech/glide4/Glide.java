@@ -77,6 +77,7 @@ import com.bumptech.glide4.load.resource.transcode.DrawableBytesTranscoder;
 import com.bumptech.glide4.load.resource.transcode.GifDrawableBytesTranscoder;
 import com.bumptech.glide4.manager.ConnectivityMonitorFactory;
 import com.bumptech.glide4.manager.RequestManagerRetriever;
+import com.bumptech.glide4.module.Glide4Module;
 import com.bumptech.glide4.module.ManifestParser;
 import com.bumptech.glide4.request.RequestListener;
 import com.bumptech.glide4.request.RequestOptions;
@@ -85,7 +86,6 @@ import com.bumptech.glide4.request.target.Target;
 import com.bumptech.glide4.util.Preconditions;
 import com.bumptech.glide4.util.Util;
 import com.bumptech.glide4.load.Transformation;
-import com.bumptech.glide4.module.GlideModule;
 
 import java.io.File;
 import java.io.InputStream;
@@ -231,7 +231,7 @@ public class Glide implements ComponentCallbacks2 {
   private static void initializeGlide(@NonNull Context context, @NonNull GlideBuilder builder) {
     Context applicationContext = context.getApplicationContext();
     GeneratedAppGlideModule annotationGeneratedModule = getAnnotationGeneratedGlideModules();
-    List<GlideModule> manifestModules = Collections.emptyList();
+    List<Glide4Module> manifestModules = Collections.emptyList();
     if (annotationGeneratedModule == null || annotationGeneratedModule.isManifestParsingEnabled()) {
       manifestModules = new ManifestParser(applicationContext).parse();
     }
@@ -240,22 +240,22 @@ public class Glide implements ComponentCallbacks2 {
         && !annotationGeneratedModule.getExcludedModuleClasses().isEmpty()) {
       Set<Class<?>> excludedModuleClasses =
           annotationGeneratedModule.getExcludedModuleClasses();
-      Iterator<GlideModule> iterator = manifestModules.iterator();
+      Iterator<Glide4Module> iterator = manifestModules.iterator();
       while (iterator.hasNext()) {
-        GlideModule current = iterator.next();
+        Glide4Module current = iterator.next();
         if (!excludedModuleClasses.contains(current.getClass())) {
           continue;
         }
         if (Log.isLoggable(TAG, Log.DEBUG)) {
-          Log.d(TAG, "AppGlideModule excludes manifest GlideModule: " + current);
+          Log.d(TAG, "AppGlideModule excludes manifest Glide4Module: " + current);
         }
         iterator.remove();
       }
     }
 
     if (Log.isLoggable(TAG, Log.DEBUG)) {
-      for (GlideModule glideModule : manifestModules) {
-        Log.d(TAG, "Discovered GlideModule from manifest: " + glideModule.getClass());
+      for (Glide4Module glideModule : manifestModules) {
+        Log.d(TAG, "Discovered Glide4Module from manifest: " + glideModule.getClass());
       }
     }
 
@@ -263,14 +263,14 @@ public class Glide implements ComponentCallbacks2 {
         annotationGeneratedModule != null
             ? annotationGeneratedModule.getRequestManagerFactory() : null;
     builder.setRequestManagerFactory(factory);
-    for (GlideModule module : manifestModules) {
+    for (Glide4Module module : manifestModules) {
       module.applyOptions(applicationContext, builder);
     }
     if (annotationGeneratedModule != null) {
       annotationGeneratedModule.applyOptions(applicationContext, builder);
     }
     Glide glide = builder.build(applicationContext);
-    for (GlideModule module : manifestModules) {
+    for (Glide4Module module : manifestModules) {
       module.registerComponents(applicationContext, glide, glide.registry);
     }
     if (annotationGeneratedModule != null) {
@@ -293,7 +293,7 @@ public class Glide implements ComponentCallbacks2 {
       if (Log.isLoggable(TAG, Log.WARN)) {
         Log.w(TAG, "Failed to find GeneratedAppGlideModule. You should include an"
             + " annotationProcessor compile dependency on com.github.bumptech.glide:compiler"
-            + " in your application and a @GlideModule annotated AppGlideModule implementation or"
+            + " in your application and a @Glide4Module annotated AppGlideModule implementation or"
             + " LibraryGlideModules will be silently ignored");
       }
     // These exceptions can't be squashed across all versions of Android.

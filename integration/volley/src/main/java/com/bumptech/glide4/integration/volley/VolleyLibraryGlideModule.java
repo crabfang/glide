@@ -7,13 +7,14 @@ import com.bumptech.glide4.Registry;
 import com.bumptech.glide4.annotation.GlideModule;
 import com.bumptech.glide4.load.model.GlideUrl;
 import com.bumptech.glide4.module.AppGlideModule;
+import com.bumptech.glide4.module.Glide4Module;
 import com.bumptech.glide4.module.LibraryGlideModule;
 import com.bumptech.glide4.load.model.ModelLoader;
 
 import java.io.InputStream;
 
 /**
- * A {@link com.bumptech.glide4.module.GlideModule} implementation to replace Glide's default
+ * A {@link Glide4Module} implementation to replace Glide's default
  * {@link java.net.HttpURLConnection} based {@link ModelLoader} with a
  * Volley based {@link ModelLoader}.
  *

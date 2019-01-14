@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Parses {@link GlideModule} references out of the AndroidManifest file.
+ * Parses {@link Glide4Module} references out of the AndroidManifest file.
  */
 // Used only in javadoc.
 @SuppressWarnings("deprecation")
 @Deprecated
 public final class ManifestParser {
   private static final String TAG = "ManifestParser";
-  private static final String GLIDE_MODULE_VALUE = "GlideModule";
+  private static final String GLIDE_MODULE_VALUE = "Glide4Module";
 
   private final Context context;
 
@@ -25,11 +25,11 @@ public final class ManifestParser {
   }
 
   @SuppressWarnings("deprecation")
-  public List<GlideModule> parse() {
+  public List<Glide4Module> parse() {
     if (Log.isLoggable(TAG, Log.DEBUG)) {
       Log.d(TAG, "Loading Glide modules");
     }
-    List<GlideModule> modules = new ArrayList<>();
+    List<Glide4Module> modules = new ArrayList<>();
     try {
       ApplicationInfo appInfo = context.getPackageManager()
           .getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
@@ -61,12 +61,12 @@ public final class ManifestParser {
   }
 
   @SuppressWarnings("deprecation")
-  private static GlideModule parseModule(String className) {
+  private static Glide4Module parseModule(String className) {
     Class<?> clazz;
     try {
       clazz = Class.forName(className);
     } catch (ClassNotFoundException e) {
-      throw new IllegalArgumentException("Unable to find GlideModule implementation", e);
+      throw new IllegalArgumentException("Unable to find Glide4Module implementation", e);
     }
 
     Object module = null;
@@ -83,13 +83,13 @@ public final class ManifestParser {
       throwInstantiateGlideModuleException(clazz, e);
     }
 
-    if (!(module instanceof GlideModule)) {
-      throw new RuntimeException("Expected instanceof GlideModule, but found: " + module);
+    if (!(module instanceof Glide4Module)) {
+      throw new RuntimeException("Expected instanceof Glide4Module, but found: " + module);
     }
-    return (GlideModule) module;
+    return (Glide4Module) module;
   }
 
   private static void throwInstantiateGlideModuleException(Class<?> clazz, Exception e) {
-    throw new RuntimeException("Unable to instantiate GlideModule implementation for " + clazz, e);
+    throw new RuntimeException("Unable to instantiate Glide4Module implementation for " + clazz, e);
   }
 }

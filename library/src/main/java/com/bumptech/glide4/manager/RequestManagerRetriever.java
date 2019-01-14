@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class RequestManagerRetriever implements Handler.Callback {
   @VisibleForTesting
-  static final String FRAGMENT_TAG = "com.bumptech.glide.manager";
+  static final String FRAGMENT_TAG = "com.bumptech.glide4.manager";
   private static final String TAG = "RMRetriever";
 
   private static final int ID_REMOVE_FRAGMENT_MANAGER = 1;

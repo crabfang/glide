@@ -6,7 +6,7 @@ import com.bumptech.glide4.Glide;
 import com.bumptech.glide4.Registry;
 
 /**
- * An internal interface, to be removed when {@link GlideModule}s are removed.
+ * An internal interface, to be removed when {@link Glide4Module}s are removed.
  */
 // Used only in javadocs.
 @SuppressWarnings("deprecation")

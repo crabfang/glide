@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.bumptech.glide4.GlideBuilder;
 
 /**
- * An internal interface, to be removed when {@link GlideModule}s are removed.
+ * An internal interface, to be removed when {@link Glide4Module}s are removed.
  */
 @Deprecated
 interface AppliesOptions {
