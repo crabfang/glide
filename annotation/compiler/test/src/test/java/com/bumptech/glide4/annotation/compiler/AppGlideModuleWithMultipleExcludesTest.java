@@ -1,16 +1,15 @@
-package com.bumptech.glide.annotation.compiler;
+package com.bumptech.glide4.annotation.compiler;
 
-import static com.bumptech.glide.annotation.compiler.test.Util.appResource;
-import static com.bumptech.glide.annotation.compiler.test.Util.asUnixChars;
-import static com.bumptech.glide.annotation.compiler.test.Util.glide;
-import static com.bumptech.glide.annotation.compiler.test.Util.subpackage;
+import static com.bumptech.glide4.annotation.compiler.test.Util.appResource;
+import static com.bumptech.glide4.annotation.compiler.test.Util.asUnixChars;
+import static com.bumptech.glide4.annotation.compiler.test.Util.glide;
+import static com.bumptech.glide4.annotation.compiler.test.Util.subpackage;
 import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 
-import com.bumptech.glide.annotation.compiler.test.ReferencedResource;
-import com.bumptech.glide.annotation.compiler.test.RegenerateResourcesRule;
-import com.bumptech.glide.annotation.compiler.test.Util;
-import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
+import com.bumptech.glide4.annotation.compiler.test.ReferencedResource;
+import com.bumptech.glide4.annotation.compiler.test.RegenerateResourcesRule;
+import com.bumptech.glide4.annotation.compiler.test.Util;
 import com.google.testing.compile.Compilation;
 import java.io.IOException;
 import javax.tools.JavaFileObject;
@@ -21,11 +20,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Tests AppGlideModules that use the @Excludes annotation
- * with a single excluded Module class in a strangely named subpackage.
+ * Tests AppGlideModules that use the @Excludes annotation with multiple excluded Module classes.
  */
 @RunWith(JUnit4.class)
-public class AppGlideModuleWithLibraryInPackageTest {
+public class AppGlideModuleWithMultipleExcludesTest {
   @Rule public final RegenerateResourcesRule regenerateResourcesRule =
       new RegenerateResourcesRule(getClass());
   private Compilation compilation;
@@ -36,8 +34,9 @@ public class AppGlideModuleWithLibraryInPackageTest {
         javac()
             .withProcessors(new GlideAnnotationProcessor())
             .compile(
-                forResource("AppModuleWithLibraryInPackage.java"),
-                forResource("LibraryModuleInPackage.java"));
+                forResource("AppModuleWithMultipleExcludes.java"),
+                forResource("EmptyLibraryModule1.java"),
+                forResource("EmptyLibraryModule2.java"));
     assertThat(compilation).succeededWithoutWarnings();
   }
 

@@ -1,18 +1,15 @@
-package com.bumptech.glide.annotation.compiler;
+package com.bumptech.glide4.annotation.compiler;
 
-import static com.bumptech.glide.annotation.compiler.test.Util.appResource;
-import static com.bumptech.glide.annotation.compiler.test.Util.asUnixChars;
-import static com.bumptech.glide.annotation.compiler.test.Util.emptyAppModule;
-import static com.bumptech.glide.annotation.compiler.test.Util.glide;
-import static com.bumptech.glide.annotation.compiler.test.Util.subpackage;
+import static com.bumptech.glide4.annotation.compiler.test.Util.appResource;
+import static com.bumptech.glide4.annotation.compiler.test.Util.asUnixChars;
+import static com.bumptech.glide4.annotation.compiler.test.Util.glide;
+import static com.bumptech.glide4.annotation.compiler.test.Util.subpackage;
 import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 
-import com.bumptech.glide.annotation.compiler.test.ReferencedResource;
-import com.bumptech.glide.annotation.compiler.test.RegenerateResourcesRule;
-import com.bumptech.glide.annotation.compiler.test.Util;
-import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
-import com.google.common.truth.Truth;
+import com.bumptech.glide4.annotation.compiler.test.ReferencedResource;
+import com.bumptech.glide4.annotation.compiler.test.RegenerateResourcesRule;
+import com.bumptech.glide4.annotation.compiler.test.Util;
 import com.google.testing.compile.Compilation;
 import java.io.IOException;
 import javax.tools.JavaFileObject;
@@ -23,11 +20,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Verifies the output of the processor with a simple single extension option in the new
- * option style where extension methods always return values.
+ * Tests AppGlideModules that use the @Excludes annotation
+ * with a single excluded Module class in a strangely named subpackage.
  */
 @RunWith(JUnit4.class)
-public class GlideExtensionWithOptionTest {
+public class AppGlideModuleWithLibraryInPackageTest {
   @Rule public final RegenerateResourcesRule regenerateResourcesRule =
       new RegenerateResourcesRule(getClass());
   private Compilation compilation;
@@ -38,30 +35,27 @@ public class GlideExtensionWithOptionTest {
         javac()
             .withProcessors(new GlideAnnotationProcessor())
             .compile(
-                emptyAppModule(),
-                forResource("ExtensionWithOption.java"));
+                forResource("AppModuleWithLibraryInPackage.java"),
+                forResource("LibraryModuleInPackage.java"));
     assertThat(compilation).succeededWithoutWarnings();
   }
 
   @Test
-  public void compilation_generatesAllExpectedFiles() {
-    Truth.assertThat(compilation.generatedSourceFiles()).hasSize(7);
-  }
-
-  @Test
+  @ReferencedResource
   public void compilation_generatesExpectedGlideOptionsClass() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(subpackage("GlideOptions"))
         .contentsAsUtf8String()
-        .isEqualTo(asUnixChars(forResource("GlideOptions.java").getCharContent(true)));
+        .isEqualTo(asUnixChars(appResource("GlideOptions.java").getCharContent(true)));
   }
 
   @Test
+  @ReferencedResource
   public void compilation_generatesExpectedGlideRequestClass() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(subpackage("GlideRequest"))
         .contentsAsUtf8String()
-        .isEqualTo(asUnixChars(forResource("GlideRequest.java").getCharContent(true)));
+        .isEqualTo(asUnixChars(appResource("GlideRequest.java").getCharContent(true)));
   }
 
   @Test
@@ -83,13 +77,12 @@ public class GlideExtensionWithOptionTest {
   }
 
   @Test
-  @ReferencedResource
   public void compilation_generatesExpectedGeneratedAppGlideModuleImpl() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(glide("GeneratedAppGlideModuleImpl"))
         .contentsAsUtf8String()
         .isEqualTo(
-            asUnixChars(appResource("GeneratedAppGlideModuleImpl.java").getCharContent(true)));
+            asUnixChars(forResource("GeneratedAppGlideModuleImpl.java").getCharContent(true)));
   }
 
   @Test

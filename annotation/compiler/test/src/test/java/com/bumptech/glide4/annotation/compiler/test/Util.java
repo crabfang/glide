@@ -1,4 +1,4 @@
-package com.bumptech.glide.annotation.compiler.test;
+package com.bumptech.glide4.annotation.compiler.test;
 
 import com.google.testing.compile.JavaFileObjects;
 import javax.tools.JavaFileObject;

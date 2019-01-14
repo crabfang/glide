@@ -1,14 +1,16 @@
-package com.bumptech.glide.annotation.compiler;
+package com.bumptech.glide4.annotation.compiler;
 
-import static com.bumptech.glide.annotation.compiler.test.Util.asUnixChars;
-import static com.bumptech.glide.annotation.compiler.test.Util.glide;
-import static com.bumptech.glide.annotation.compiler.test.Util.subpackage;
+import static com.bumptech.glide4.annotation.compiler.test.Util.appResource;
+import static com.bumptech.glide4.annotation.compiler.test.Util.asUnixChars;
+import static com.bumptech.glide4.annotation.compiler.test.Util.emptyAppModule;
+import static com.bumptech.glide4.annotation.compiler.test.Util.glide;
+import static com.bumptech.glide4.annotation.compiler.test.Util.subpackage;
 import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 
-import com.bumptech.glide.annotation.compiler.test.RegenerateResourcesRule;
-import com.bumptech.glide.annotation.compiler.test.Util;
-import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
+import com.bumptech.glide4.annotation.compiler.test.ReferencedResource;
+import com.bumptech.glide4.annotation.compiler.test.RegenerateResourcesRule;
+import com.bumptech.glide4.annotation.compiler.test.Util;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import java.io.IOException;
@@ -20,11 +22,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Tests adding a single {@link com.bumptech.glide.test.EmptyAppModule} in a project.
+ * Verifies the output of the processor with a simple single extension option in the new
+ * option style where extension methods always return values.
  */
 @RunWith(JUnit4.class)
-public class EmptyAppGlideModuleTest {
-  private static final String MODULE_NAME = "EmptyAppModule.java";
+public class GlideExtensionWithOptionTest {
   @Rule public final RegenerateResourcesRule regenerateResourcesRule =
       new RegenerateResourcesRule(getClass());
   private Compilation compilation;
@@ -34,13 +36,15 @@ public class EmptyAppGlideModuleTest {
     compilation =
         javac()
             .withProcessors(new GlideAnnotationProcessor())
-            .compile(forResource(MODULE_NAME));
+            .compile(
+                emptyAppModule(),
+                forResource("ExtensionWithOption.java"));
     assertThat(compilation).succeededWithoutWarnings();
   }
 
   @Test
   public void compilation_generatesAllExpectedFiles() {
-    Truth.assertThat(compilation.generatedSourceFiles()).hasSize(6);
+    Truth.assertThat(compilation.generatedSourceFiles()).hasSize(7);
   }
 
   @Test
@@ -60,41 +64,44 @@ public class EmptyAppGlideModuleTest {
   }
 
   @Test
+  @ReferencedResource
   public void compilation_generatesExpectedGlideRequestsClass() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(subpackage("GlideRequests"))
         .contentsAsUtf8String()
-        .isEqualTo(asUnixChars(forResource("GlideRequests.java").getCharContent(true)));
+        .isEqualTo(asUnixChars(appResource("GlideRequests.java").getCharContent(true)));
   }
 
   @Test
+  @ReferencedResource
   public void compilationGeneratesExpectedGlideAppClass() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(subpackage("GlideApp"))
         .contentsAsUtf8String()
-        .isEqualTo(asUnixChars(forResource("GlideApp.java").getCharContent(true)));
+        .isEqualTo(asUnixChars(appResource("GlideApp.java").getCharContent(true)));
   }
 
   @Test
+  @ReferencedResource
   public void compilation_generatesExpectedGeneratedAppGlideModuleImpl() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(glide("GeneratedAppGlideModuleImpl"))
         .contentsAsUtf8String()
         .isEqualTo(
-            asUnixChars(forResource("GeneratedAppGlideModuleImpl.java").getCharContent(true)));
+            asUnixChars(appResource("GeneratedAppGlideModuleImpl.java").getCharContent(true)));
   }
 
   @Test
+  @ReferencedResource
   public void compilation_generatesExpectedGeneratedRequestManagerFactory() throws IOException {
     assertThat(compilation)
         .generatedSourceFile(glide("GeneratedRequestManagerFactory"))
         .contentsAsUtf8String()
         .isEqualTo(
-            asUnixChars(forResource("GeneratedRequestManagerFactory.java").getCharContent(true)));
+            asUnixChars(appResource("GeneratedRequestManagerFactory.java").getCharContent(true)));
   }
 
   private JavaFileObject forResource(String name) {
     return Util.forResource(getClass().getSimpleName(), name);
   }
 }
-

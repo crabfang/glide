@@ -37,7 +37,7 @@ task regenerateTestResources {
     group 'Verification'
     description 'Regenerates all test resource files under annotation/compiler/test/src/test/resources that are compared against the current output to detect regressions'
     tasks.withType(Test) {
-        systemProperties.put("com.bumptech.glide.annotation.compiler.test.regenerate.path", projectDir)
+        systemProperties.put("com.bumptech.glide4.annotation.compiler.test.regenerate.path", projectDir)
     }
     doFirst {
         println("Regenerating test resources....")

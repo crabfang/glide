@@ -1,6 +1,6 @@
-package com.bumptech.glide.annotation.compiler;
+package com.bumptech.glide4.annotation.compiler;
 
-import static com.bumptech.glide.annotation.compiler.test.Util.emptyAppModule;
+import static com.bumptech.glide4.annotation.compiler.test.Util.emptyAppModule;
 import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 import static org.junit.Assert.assertThrows;
@@ -8,7 +8,6 @@ import static org.junit.Assert.fail;
 
 import com.bumptech.glide4.annotation.GlideExtension;
 import com.bumptech.glide4.annotation.GlideOption;
-import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;

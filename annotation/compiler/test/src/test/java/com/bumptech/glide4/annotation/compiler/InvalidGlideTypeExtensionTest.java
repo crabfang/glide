@@ -1,8 +1,8 @@
-package com.bumptech.glide.annotation.compiler;
+package com.bumptech.glide4.annotation.compiler;
 
 
-import static com.bumptech.glide.annotation.compiler.test.Util.emptyAppModule;
-import static com.bumptech.glide.annotation.compiler.test.Util.subpackage;
+import static com.bumptech.glide4.annotation.compiler.test.Util.emptyAppModule;
+import static com.bumptech.glide4.annotation.compiler.test.Util.subpackage;
 import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 import static org.junit.Assert.assertThrows;
@@ -10,7 +10,6 @@ import static org.junit.Assert.fail;
 
 import com.bumptech.glide4.annotation.GlideExtension;
 import com.bumptech.glide4.annotation.GlideType;
-import com.bumptech.glide4.annotation.compiler.GlideAnnotationProcessor;
 import com.google.common.truth.Truth;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;
@@ -211,7 +210,7 @@ public class InvalidGlideTypeExtensionTest {
 
     assertThrows(
         "error: method asDrawable() is already defined in class"
-            + " com.bumptech.glide.test.GlideRequests",
+            + " com.bumptech.glide4.test.GlideRequests",
         RuntimeException.class,
         new ThrowingRunnable() {
           @Override

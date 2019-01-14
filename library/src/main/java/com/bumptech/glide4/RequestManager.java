@@ -1,9 +1,5 @@
 package com.bumptech.glide4;
 
-import static com.bumptech.glide4.request.RequestOptions.decodeTypeOf;
-import static com.bumptech.glide4.request.RequestOptions.diskCacheStrategyOf;
-import static com.bumptech.glide4.request.RequestOptions.skipMemoryCacheOf;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -57,10 +53,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class RequestManager implements LifecycleListener,
     ModelTypes<RequestBuilder<Drawable>> {
-  private static final RequestOptions DECODE_TYPE_BITMAP = decodeTypeOf(Bitmap.class).lock();
-  private static final RequestOptions DECODE_TYPE_GIF = decodeTypeOf(GifDrawable.class).lock();
+  private static final RequestOptions DECODE_TYPE_BITMAP = RequestOptions.decodeTypeOf(Bitmap.class).lock();
+  private static final RequestOptions DECODE_TYPE_GIF = RequestOptions.decodeTypeOf(GifDrawable.class).lock();
   private static final RequestOptions DOWNLOAD_ONLY_OPTIONS =
-      diskCacheStrategyOf(DiskCacheStrategy.DATA).priority(Priority.LOW)
+          RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.DATA).priority(Priority.LOW)
           .skipMemoryCache(true);
 
   protected final Glide glide;
@@ -547,7 +543,7 @@ public class RequestManager implements LifecycleListener,
   @NonNull
   @CheckResult
   public RequestBuilder<File> asFile() {
-    return as(File.class).apply(skipMemoryCacheOf(true));
+    return as(File.class).apply(RequestOptions.skipMemoryCacheOf(true));
   }
 
   /**

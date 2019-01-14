@@ -287,7 +287,7 @@ public class Glide implements ComponentCallbacks2 {
     try {
       Class<GeneratedAppGlideModule> clazz =
           (Class<GeneratedAppGlideModule>)
-              Class.forName("com.bumptech.glide.GeneratedAppGlideModuleImpl");
+              Class.forName("com.bumptech.glide4.GeneratedAppGlideModuleImpl");
       result = clazz.getDeclaredConstructor().newInstance();
     } catch (ClassNotFoundException e) {
       if (Log.isLoggable(TAG, Log.WARN)) {

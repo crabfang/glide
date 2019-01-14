@@ -1,4 +1,4 @@
-package com.bumptech.glide.annotation.compiler.test;
+package com.bumptech.glide4.annotation.compiler.test;
 
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
