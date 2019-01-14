@@ -4,12 +4,12 @@ package com.bumptech.glide4.load.resource.gif;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.engine.bitmap_recycle.ArrayPool;
 import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
 
 /**
- * Implements {@link com.bumptech.glide.gifdecoder.GifDecoder.BitmapProvider} by wrapping Glide's
+ * Implements {@link GifDecoder.BitmapProvider} by wrapping Glide's
  * {@link BitmapPool}.
  */
 public final class GifBitmapProvider implements GifDecoder.BitmapProvider {

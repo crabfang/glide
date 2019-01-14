@@ -28,7 +28,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.view.View;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.Transformation;
 import com.bumptech.glide.load.resource.gif.GifDrawableTest.BitmapTrackingShadowCanvas;
 import com.bumptech.glide.tests.GlideShadowLooper;

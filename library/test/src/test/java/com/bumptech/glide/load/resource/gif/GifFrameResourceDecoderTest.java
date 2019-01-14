@@ -6,7 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import android.graphics.Bitmap;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.Options;
 import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide4.load.resource.gif.GifFrameResourceDecoder;

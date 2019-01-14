@@ -11,7 +11,7 @@ import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide4.Glide;
 import com.bumptech.glide4.RequestBuilder;
 import com.bumptech.glide4.RequestManager;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.Key;
 import com.bumptech.glide4.load.Transformation;
 import com.bumptech.glide4.load.engine.DiskCacheStrategy;

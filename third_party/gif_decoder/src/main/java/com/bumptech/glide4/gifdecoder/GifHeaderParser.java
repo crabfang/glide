@@ -1,8 +1,8 @@
-package com.bumptech.glide.gifdecoder;
+package com.bumptech.glide4.gifdecoder;
 
-import static com.bumptech.glide.gifdecoder.GifDecoder.STATUS_FORMAT_ERROR;
-import static com.bumptech.glide.gifdecoder.GifFrame.DISPOSAL_NONE;
-import static com.bumptech.glide.gifdecoder.GifFrame.DISPOSAL_UNSPECIFIED;
+import static com.bumptech.glide4.gifdecoder.GifDecoder.STATUS_FORMAT_ERROR;
+import static com.bumptech.glide4.gifdecoder.GifFrame.DISPOSAL_NONE;
+import static com.bumptech.glide4.gifdecoder.GifFrame.DISPOSAL_UNSPECIFIED;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +13,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 
 /**
- * A class responsible for creating {@link com.bumptech.glide.gifdecoder.GifHeader}s from data
+ * A class responsible for creating {@link GifHeader}s from data
  * representing animated GIFs.
  *
  * @see <a href="https://www.w3.org/Graphics/GIF/spec-gif89a.txt">GIF 89a Specification</a>

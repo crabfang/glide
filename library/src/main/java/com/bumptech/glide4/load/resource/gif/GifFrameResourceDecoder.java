@@ -2,7 +2,7 @@ package com.bumptech.glide4.load.resource.gif;
 
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.Options;
 import com.bumptech.glide4.load.ResourceDecoder;
 import com.bumptech.glide4.load.engine.Resource;

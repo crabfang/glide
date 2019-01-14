@@ -10,6 +10,11 @@ import android.support.annotation.NonNull;
 import com.bumptech.glide.testutil.TestUtil;
 import java.io.IOException;
 import java.util.Arrays;
+
+import com.bumptech.glide4.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifHeader;
+import com.bumptech.glide4.gifdecoder.GifHeaderParser;
+import com.bumptech.glide4.gifdecoder.StandardGifDecoder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +26,7 @@ import org.robolectric.annotation.Implements;
 import org.robolectric.shadows.ShadowBitmap;
 
 /**
- * Tests for {@link com.bumptech.glide.gifdecoder.GifDecoder}.
+ * Tests for {@link GifDecoder}.
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = Config.NONE, sdk = 18)

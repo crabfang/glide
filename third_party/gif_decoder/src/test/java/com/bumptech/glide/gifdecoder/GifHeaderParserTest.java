@@ -11,13 +11,18 @@ import com.bumptech.glide.testutil.TestUtil;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import com.bumptech.glide4.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifFrame;
+import com.bumptech.glide4.gifdecoder.GifHeader;
+import com.bumptech.glide4.gifdecoder.GifHeaderParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Tests for {@link com.bumptech.glide.gifdecoder.GifHeaderParser}.
+ * Tests for {@link GifHeaderParser}.
  */
 @RunWith(JUnit4.class)
 public class GifHeaderParserTest {

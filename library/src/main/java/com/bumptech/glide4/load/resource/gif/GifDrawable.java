@@ -1,6 +1,6 @@
 package com.bumptech.glide4.load.resource.gif;
 
-import static com.bumptech.glide.gifdecoder.GifDecoder.TOTAL_ITERATION_COUNT_FOREVER;
+import static com.bumptech.glide4.gifdecoder.GifDecoder.TOTAL_ITERATION_COUNT_FOREVER;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,7 +17,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.graphics.drawable.Animatable2Compat;
 import android.view.Gravity;
 import com.bumptech.glide4.Glide;
-import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.load.Transformation;
 import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide4.util.Preconditions;

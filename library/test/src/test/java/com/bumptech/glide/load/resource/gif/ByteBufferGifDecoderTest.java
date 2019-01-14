@@ -9,9 +9,9 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bumptech.glide.gifdecoder.GifDecoder;
-import com.bumptech.glide.gifdecoder.GifHeader;
-import com.bumptech.glide.gifdecoder.GifHeaderParser;
+import com.bumptech.glide4.gifdecoder.GifDecoder;
+import com.bumptech.glide4.gifdecoder.GifHeader;
+import com.bumptech.glide4.gifdecoder.GifHeaderParser;
 import com.bumptech.glide4.load.ImageHeaderParser;
 import com.bumptech.glide4.load.Options;
 import com.bumptech.glide4.load.engine.bitmap_recycle.BitmapPool;

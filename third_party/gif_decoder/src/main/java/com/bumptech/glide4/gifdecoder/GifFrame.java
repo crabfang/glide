@@ -1,4 +1,4 @@
-package com.bumptech.glide.gifdecoder;
+package com.bumptech.glide4.gifdecoder;
 
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntDef;

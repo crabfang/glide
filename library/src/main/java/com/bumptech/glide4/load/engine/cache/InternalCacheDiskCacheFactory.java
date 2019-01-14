@@ -1,10 +1,12 @@
 package com.bumptech.glide4.load.engine.cache;
 
 import android.content.Context;
+import com.bumptech.glide4.disklrucache.DiskLruCache;
+
 import java.io.File;
 
 /**
- * Creates an {@link com.bumptech.glide.disklrucache.DiskLruCache} based disk cache in the internal
+ * Creates an {@link DiskLruCache} based disk cache in the internal
  * disk cache directory.
  */
 // Public API.

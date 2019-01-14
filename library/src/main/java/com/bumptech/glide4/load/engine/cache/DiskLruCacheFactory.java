@@ -1,9 +1,11 @@
 package com.bumptech.glide4.load.engine.cache;
 
+import com.bumptech.glide4.disklrucache.DiskLruCache;
+
 import java.io.File;
 
 /**
- * Creates an {@link com.bumptech.glide.disklrucache.DiskLruCache} based disk cache in the specified
+ * Creates an {@link DiskLruCache} based disk cache in the specified
  * disk cache directory.
  *
  * <p>If you need to make I/O access before returning the cache directory use the {@link
