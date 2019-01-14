@@ -1,61 +1,88 @@
 package com.bumptech.glide.request;
 
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.target.Target;
 
 /**
  * A class for monitoring the status of a request while images load.
  *
- * @param <T> The type of the model being loaded.
+ * <p>All methods in this interface will be called from a background thread if the
+ * {@code RequestListener} is added to a request that is started with
+ * {@link RequestBuilder#submit()}, {@link RequestBuilder#submit(int, int)}, or
+ * {@link RequestBuilder#into(int, int)}. Those methods no longer post results back to the main
+ * thread to avoid the unnecessary thread interactions and corresponding latency. As a side affect
+ * though, listeners added to those requests are no longer called on the main thread.
+ * {@code RequestListeners} added to requests started with {@link RequestBuilder#into(Target)} or
+ * {@link RequestBuilder#into(ImageView)} will continue to be called back on the main thread.
+ *
  * @param <R> The type of resource being loaded.
  */
-public interface RequestListener<T, R> {
+public interface RequestListener<R> {
 
-    /**
-     * Called when an exception occurs during a load. Will only be called if we currently want to display an image
-     * for the given model in the given target. It is recommended to create a single instance per activity/fragment
-     * rather than instantiate a new object for each call to {@code Glide.load()} to avoid object churn.
-     *
-     * <p>
-     *     It is safe to reload this or a different model or change what is displayed in the target at this point.
-     *     For example:
-     * <pre>
-     * {@code
-     * public void onException(Exception e, T model, Target target, boolean isFirstResource) {
-     *     target.setPlaceholder(R.drawable.a_specific_error_for_my_exception);
-     *     Glide.load(model).into(target);
-     * }
-     * }
-     * </pre>
-     * </p>
-     *
-     * <p>
-     *     Note - if you want to reload this or any other model after an exception, you will need to include all
-     *     relevant builder calls (like centerCrop, placeholder etc).
-     * </p>
-     *
-     * @param e The exception, or null.
-     * @param model The model we were trying to load when the exception occurred.
-     * @param target The {@link Target} we were trying to load the image into.
-     * @param isFirstResource True if this exception is for the first resource to load.
-     * @return True if the listener has handled updating the target for the given exception, false to allow
-     *         Glide's request to update the target.
-     */
-    boolean onException(Exception e, T model, Target<R> target, boolean isFirstResource);
+  /**
+   * Called when an exception occurs during a load, immediately before
+   * {@link Target#onLoadFailed(Drawable)}. Will only be called if we currently want to display an
+   * image for the given model in the given target. It is recommended to create a single instance
+   * per activity/fragment rather than instantiate a new object for each call to {@code
+   * Glide.with(fragment/activity).load()} to avoid object churn.
+   *
+   * <p>It is not safe to reload this or a different model in this callback. If you need to do so
+   * use {@link com.bumptech.glide.RequestBuilder#error(RequestBuilder)} instead.
+   *
+   * <p>Although you can't start an entirely new load, it is safe to change what is displayed in the
+   * {@link Target} at this point, as long as you return {@code true} from the method to prevent
+   * {@link Target#onLoadFailed(Drawable)} from being called.
+   *
+   * <p>For threading guarantees, see the class comment.
+   *
+   * For example:
+   * <pre>
+   * {@code
+   * public boolean onLoadFailed(Exception e, T model, Target target, boolean isFirstResource) {
+   *     target.setPlaceholder(R.drawable.a_specific_error_for_my_exception);
+   *     return true; // Prevent onLoadFailed from being called on the Target.
+   * }
+   * }
+   * </pre>
+   * </p>
+   *
+   *
+   * @param e               The maybe {@code null} exception containing information about why the
+   *                        request failed.
+   * @param model           The model we were trying to load when the exception occurred.
+   * @param target          The {@link Target} we were trying to load the image into.
+   * @param isFirstResource {@code true} if this exception is for the first resource to load.
+   * @return {@code true} to prevent {@link Target#onLoadFailed(Drawable)} from being called on
+   * {@code target}, typically because the listener wants to update the {@code target} or the object
+   * the {@code target} wraps itself or {@code false} to allow {@link Target#onLoadFailed(Drawable)}
+   * to be called on {@code target}.
+   */
+  boolean onLoadFailed(
+      @Nullable GlideException e, Object model, Target<R> target, boolean isFirstResource);
 
-    /**
-     * Called when a load completes successfully, immediately after
-     * {@link Target#onResourceReady(Object, com.bumptech.glide.request.animation.GlideAnimation)}.
-     *
-     * @param resource The resource that was loaded for the target.
-     * @param model The specific model that was used to load the image.
-     * @param target The target the model was loaded into.
-     * @param isFromMemoryCache True if the load completed synchronously (useful for determining whether or not to
-     *                          animate)
-     * @param isFirstResource True if this is the first resource to in this load to be loaded into the target. For
-     *                        example when loading a thumbnail and a fullsize image, this will be true for the first
-     *                        image to load and false for the second.
-     * @return True if the listener has handled setting the resource on the target (including any animations), false to
-     *         allow Glide's request to update the target (again including animations).
-     */
-    boolean onResourceReady(R resource, T model, Target<R> target, boolean isFromMemoryCache, boolean isFirstResource);
+  /**
+   * Called when a load completes successfully, immediately before {@link
+   * Target#onResourceReady(Object, com.bumptech.glide.request.transition.Transition)}.
+   *
+   * <p>For threading guarantees, see the class comment.
+   *
+   * @param resource The resource that was loaded for the target.
+   * @param model The specific model that was used to load the image.
+   * @param target The target the model was loaded into.
+   * @param dataSource The {@link DataSource} the resource was loaded from.
+   * @param isFirstResource {@code true} if this is the first resource to in this load to be loaded
+   *     into the target. For example when loading a thumbnail and a full-sized image, this will be
+   *     {@code true} for the first image to load and {@code false} for the second.
+   * @return {@code true} to prevent {@link Target#onLoadFailed(Drawable)} from being called on
+   *     {@code target}, typically because the listener wants to update the {@code target} or the
+   *     object the {@code target} wraps itself or {@code false} to allow {@link
+   *     Target#onLoadFailed(Drawable)} to be called on {@code target}.
+   */
+  boolean onResourceReady(
+      R resource, Object model, Target<R> target, DataSource dataSource, boolean isFirstResource);
 }
