@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Tests adding a single {@link com.bumptech.glide.test.EmptyAppModule} in a project.
+ * Tests adding a single {@link com.bumptech.glide4.test.EmptyAppModule} in a project.
  */
 @RunWith(JUnit4.class)
 public class EmptyAppGlideModuleTest {

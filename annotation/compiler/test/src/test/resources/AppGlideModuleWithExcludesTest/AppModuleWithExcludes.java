@@ -1,4 +1,4 @@
-package com.bumptech.glide.test;
+package com.bumptech.glide4.test;
 
 import com.bumptech.glide4.annotation.Excludes;
 import com.bumptech.glide4.annotation.GlideModule;

@@ -1,4 +1,4 @@
-package com.bumptech.glide.test;
+package com.bumptech.glide4.test;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -174,10 +174,10 @@ public class GlideRequests extends RequestManager {
 
   @Override
   protected void setRequestOptions(@NonNull RequestOptions toSet) {
-    if (toSet instanceof com.bumptech.glide.test.GlideOptions) {
+    if (toSet instanceof com.bumptech.glide4.test.GlideOptions) {
       super.setRequestOptions(toSet);
     } else {
-      super.setRequestOptions(new com.bumptech.glide.test.GlideOptions().apply(toSet));
+      super.setRequestOptions(new com.bumptech.glide4.test.GlideOptions().apply(toSet));
     }
   }
 }

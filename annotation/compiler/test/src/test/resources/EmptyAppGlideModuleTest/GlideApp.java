@@ -1,4 +1,4 @@
-package com.bumptech.glide.test;
+package com.bumptech.glide4.test;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

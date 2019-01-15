@@ -1,9 +1,10 @@
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+-keep public class * implements com.bumptech.glide4.module.GlideModule
+-keep public class * extends com.bumptech.glide4.module.AppGlideModule
+-keep public enum com.bumptech.glide4.load.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
 }
+-keep public class com.bumptech.glide4.** { *;}
 
 # Uncomment for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=Glide4Module

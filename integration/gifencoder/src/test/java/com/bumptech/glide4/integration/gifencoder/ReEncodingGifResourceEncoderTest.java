@@ -18,7 +18,7 @@ import android.graphics.Bitmap;
 import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.gifdecoder.GifHeader;
 import com.bumptech.glide4.gifdecoder.GifHeaderParser;
-import com.bumptech.glide.gifencoder.AnimatedGifEncoder;
+import com.bumptech.glide4.gifencoder.AnimatedGifEncoder;
 import com.bumptech.glide4.load.EncodeStrategy;
 import com.bumptech.glide4.load.Options;
 import com.bumptech.glide4.load.Transformation;

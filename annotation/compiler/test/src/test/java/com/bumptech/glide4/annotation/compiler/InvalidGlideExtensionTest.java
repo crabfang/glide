@@ -29,7 +29,7 @@ public class InvalidGlideExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "PublicConstructor",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "public class PublicConstructor { }"));
@@ -51,7 +51,7 @@ public class InvalidGlideExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "PackagePrivateExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "class PackagePrivateExtension {",
@@ -74,7 +74,7 @@ public class InvalidGlideExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "ConstructorParametersExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "@GlideExtension",
                   "public class ConstructorParametersExtension {",
@@ -98,7 +98,7 @@ public class InvalidGlideExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide4.annotation.GlideExtension;",
                     "@GlideExtension",
                     "public class Extension {",
@@ -117,7 +117,7 @@ public class InvalidGlideExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide4.annotation.GlideExtension;",
                     "@GlideExtension",
                     "public class Extension {",

@@ -1,4 +1,4 @@
-package com.bumptech.glide.test;
+package com.bumptech.glide4.test;
 
 import android.content.Context;
 import android.content.res.Resources;

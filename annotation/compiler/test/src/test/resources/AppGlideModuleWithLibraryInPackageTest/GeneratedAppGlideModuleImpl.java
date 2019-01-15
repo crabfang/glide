@@ -3,7 +3,7 @@ package com.bumptech.glide;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import com.bumptech.glide.test.AppModuleWithLibraryInPackage;
+import com.bumptech.glide4.test.AppModuleWithLibraryInPackage;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.SuppressWarnings;
@@ -17,8 +17,8 @@ final class GeneratedAppGlideModuleImpl extends GeneratedAppGlideModule {
   GeneratedAppGlideModuleImpl() {
     appGlideModule = new AppModuleWithLibraryInPackage();
     if (Log.isLoggable("Glide", Log.DEBUG)) {
-      Log.d("Glide", "Discovered AppGlideModule from annotation: com.bumptech.glide.test.AppModuleWithLibraryInPackage");
-      Log.d("Glide", "AppGlideModule excludes LibraryGlideModule from annotation: com.bumptech.glide.test._package.LibraryModuleInPackage");
+      Log.d("Glide", "Discovered AppGlideModule from annotation: com.bumptech.glide4.test.AppModuleWithLibraryInPackage");
+      Log.d("Glide", "AppGlideModule excludes LibraryGlideModule from annotation: com.bumptech.glide4.test._package.LibraryModuleInPackage");
     }
   }
 
@@ -42,7 +42,7 @@ final class GeneratedAppGlideModuleImpl extends GeneratedAppGlideModule {
   @NonNull
   public Set<Class<?>> getExcludedModuleClasses() {
     Set<Class<?>> excludedClasses = new HashSet<Class<?>>();
-    excludedClasses.add(com.bumptech.glide.test._package.LibraryModuleInPackage.class);
+    excludedClasses.add(com.bumptech.glide4.test._package.LibraryModuleInPackage.class);
     return excludedClasses;
   }
 

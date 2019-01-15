@@ -3,7 +3,7 @@ package com.bumptech.glide;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import com.bumptech.glide.test.EmptyAppModule;
+import com.bumptech.glide4.test.EmptyAppModule;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.SuppressWarnings;
@@ -17,7 +17,7 @@ final class GeneratedAppGlideModuleImpl extends GeneratedAppGlideModule {
   GeneratedAppGlideModuleImpl() {
     appGlideModule = new EmptyAppModule();
     if (Log.isLoggable("Glide", Log.DEBUG)) {
-      Log.d("Glide", "Discovered AppGlideModule from annotation: com.bumptech.glide.test.EmptyAppModule");
+      Log.d("Glide", "Discovered AppGlideModule from annotation: com.bumptech.glide4.test.EmptyAppModule");
     }
   }
 

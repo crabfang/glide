@@ -40,7 +40,7 @@ public class InvalidGlideTypeExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import android.support.annotation.NonNull;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
                         "import com.bumptech.glide4.annotation.GlideType;",
@@ -63,7 +63,7 @@ public class InvalidGlideTypeExtensionTest {
     assertThrows(
         "@GlideType methods must take a RequestBuilder object as their first and only"
             + " parameter, but given multiple for:"
-            + " com.bumptech.glide.test.Extension#doSomething()",
+            + " com.bumptech.glide4.test.Extension#doSomething()",
         RuntimeException.class,
         new ThrowingRunnable() {
           @Override
@@ -74,7 +74,7 @@ public class InvalidGlideTypeExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
                         "import com.bumptech.glide4.annotation.GlideType;",
                         "@GlideExtension",
@@ -97,7 +97,7 @@ public class InvalidGlideTypeExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import android.support.annotation.NonNull;",
                 "import com.bumptech.glide.RequestBuilder;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -123,7 +123,7 @@ public class InvalidGlideTypeExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "WrongParameterTypeExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -150,7 +150,7 @@ public class InvalidGlideTypeExtensionTest {
     assertThrows(
         "@GlideType methods must take a RequestBuilder object as their first and only"
             + " parameter, but given multiple for:"
-            + " com.bumptech.glide.test.Extension#type("
+            + " com.bumptech.glide4.test.Extension#type("
             + "com.bumptech.glide.RequestBuilder<java.lang.Number>,"
             + "java.lang.Object)",
         RuntimeException.class,
@@ -163,7 +163,7 @@ public class InvalidGlideTypeExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import android.support.annotation.NonNull;",
                         "import com.bumptech.glide.RequestBuilder;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -191,7 +191,7 @@ public class InvalidGlideTypeExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import android.graphics.drawable.Drawable;",
                     "import android.support.annotation.NonNull;",
                     "import com.bumptech.glide.RequestBuilder;",
@@ -229,7 +229,7 @@ public class InvalidGlideTypeExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import android.support.annotation.NonNull;",
                     "import com.bumptech.glide.RequestBuilder;",
                     "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -256,7 +256,7 @@ public class InvalidGlideTypeExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "WrongReturnTypeExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -289,7 +289,7 @@ public class InvalidGlideTypeExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "WrongBuilderTypeExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -319,7 +319,7 @@ public class InvalidGlideTypeExtensionTest {
     assertThrows(
         "@GlideType methods must take a RequestBuilder object as their first and only parameter,"
             + " but given multiple for:"
-            + " com.bumptech.glide.test.Extension#asNumber("
+            + " com.bumptech.glide4.test.Extension#asNumber("
             + "com.bumptech.glide.RequestBuilder<java.lang.Number>,java.lang.Object)",
         RuntimeException.class,
         new ThrowingRunnable() {
@@ -331,7 +331,7 @@ public class InvalidGlideTypeExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import android.support.annotation.NonNull;",
                         "import com.bumptech.glide.RequestBuilder;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -359,7 +359,7 @@ public class InvalidGlideTypeExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "IncorrectParameterExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide.RequestBuilder;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
@@ -393,7 +393,7 @@ public class InvalidGlideTypeExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide.RequestBuilder;",
                     "import com.bumptech.glide4.annotation.GlideExtension;",
                     "import com.bumptech.glide4.annotation.GlideType;",
@@ -409,6 +409,6 @@ public class InvalidGlideTypeExtensionTest {
     assertThat(compilation).succeeded();
     assertThat(compilation).hadWarningCount(1);
     assertThat(compilation).hadWarningContaining("android.support.annotation.NonNull");
-    assertThat(compilation).hadWarningContaining("com.bumptech.glide.test.Extension#asNumber");
+    assertThat(compilation).hadWarningContaining("com.bumptech.glide4.test.Extension#asNumber");
   }
 }

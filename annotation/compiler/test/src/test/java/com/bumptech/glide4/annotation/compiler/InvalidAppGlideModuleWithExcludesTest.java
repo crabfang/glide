@@ -30,11 +30,11 @@ public class InvalidAppGlideModuleWithExcludesTest {
                 .compile(
                     JavaFileObjects.forSourceLines(
                         "AppModuleWithExcludes",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import com.bumptech.glide4.annotation.Excludes;",
                         "import com.bumptech.glide4.annotation.GlideModule;",
                         "import com.bumptech.glide.module.AppGlideModule;",
-                        "import com.bumptech.glide.test.EmptyLibraryModule;",
+                        "import com.bumptech.glide4.test.EmptyLibraryModule;",
                         "@GlideModule",
                         "@Excludes(EmptyLibraryModule.class)",
                         "public final class AppModuleWithExcludes extends AppGlideModule {}"));
@@ -50,11 +50,11 @@ public class InvalidAppGlideModuleWithExcludesTest {
             .compile(
                 JavaFileObjects.forSourceLines(
                     "AppModuleWithExcludes",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide4.annotation.Excludes;",
                     "import com.bumptech.glide4.annotation.GlideModule;",
                     "import com.bumptech.glide.module.AppGlideModule;",
-                    "import com.bumptech.glide.test.EmptyLibraryModule;",
+                    "import com.bumptech.glide4.test.EmptyLibraryModule;",
                     "@GlideModule",
                     "@Excludes",
                     "public final class AppModuleWithExcludes extends AppGlideModule {}"));
@@ -69,11 +69,11 @@ public class InvalidAppGlideModuleWithExcludesTest {
             .compile(
                 JavaFileObjects.forSourceLines(
                     "AppModuleWithExcludes",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide4.annotation.Excludes;",
                     "import com.bumptech.glide4.annotation.GlideModule;",
                     "import com.bumptech.glide.module.AppGlideModule;",
-                    "import com.bumptech.glide.test.EmptyLibraryModule;",
+                    "import com.bumptech.glide4.test.EmptyLibraryModule;",
                     "@GlideModule",
                     "@Excludes(Object.class)",
                     "public final class AppModuleWithExcludes extends AppGlideModule {}"));

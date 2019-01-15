@@ -9,7 +9,7 @@ import com.bumptech.glide4.gifdecoder.GifDecoder;
 import com.bumptech.glide4.gifdecoder.GifHeader;
 import com.bumptech.glide4.gifdecoder.GifHeaderParser;
 import com.bumptech.glide4.gifdecoder.StandardGifDecoder;
-import com.bumptech.glide.gifencoder.AnimatedGifEncoder;
+import com.bumptech.glide4.gifencoder.AnimatedGifEncoder;
 import com.bumptech.glide4.load.EncodeStrategy;
 import com.bumptech.glide4.load.Option;
 import com.bumptech.glide4.load.Options;

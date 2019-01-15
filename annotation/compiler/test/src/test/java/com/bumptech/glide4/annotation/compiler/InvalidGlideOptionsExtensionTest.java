@@ -37,7 +37,7 @@ public class InvalidGlideOptionsExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
                         "import com.bumptech.glide4.annotation.GlideOption;",
                         "@GlideExtension",
@@ -59,7 +59,7 @@ public class InvalidGlideOptionsExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "NonRequestOptionsFirstArgExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "import com.bumptech.glide4.annotation.GlideOption;",
                   "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -89,7 +89,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
                 "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -113,7 +113,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
                 "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -142,7 +142,7 @@ public class InvalidGlideOptionsExtensionTest {
                 emptyAppModule(),
                 JavaFileObjects.forSourceLines(
                     "Extension",
-                    "package com.bumptech.glide.test;",
+                    "package com.bumptech.glide4.test;",
                     "import com.bumptech.glide4.annotation.GlideExtension;",
                     "import com.bumptech.glide4.annotation.GlideOption;",
                     "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -173,7 +173,7 @@ public class InvalidGlideOptionsExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
                         "import com.bumptech.glide4.annotation.GlideOption;",
                         "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -198,7 +198,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
                 "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -227,7 +227,7 @@ public class InvalidGlideOptionsExtensionTest {
                     emptyAppModule(),
                     JavaFileObjects.forSourceLines(
                         "Extension",
-                        "package com.bumptech.glide.test;",
+                        "package com.bumptech.glide4.test;",
                         "import com.bumptech.glide4.annotation.GlideExtension;",
                         "import com.bumptech.glide4.annotation.GlideOption;",
                         "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -252,7 +252,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
                 "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -276,7 +276,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import android.support.annotation.NonNull;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
@@ -303,7 +303,7 @@ public class InvalidGlideOptionsExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "WrongReturnTypeExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "import com.bumptech.glide4.annotation.GlideOption;",
@@ -335,7 +335,7 @@ public class InvalidGlideOptionsExtensionTest {
             emptyAppModule(),
             JavaFileObjects.forSourceLines(
                 "Extension",
-                "package com.bumptech.glide.test;",
+                "package com.bumptech.glide4.test;",
                 "import com.bumptech.glide4.annotation.GlideExtension;",
                 "import com.bumptech.glide4.annotation.GlideOption;",
                 "import com.bumptech.glide.request.BaseRequestOptions;",
@@ -351,7 +351,7 @@ public class InvalidGlideOptionsExtensionTest {
     assertThat(compilation).succeeded();
     assertThat(compilation).hadWarningCount(1);
     assertThat(compilation).hadWarningContaining("android.support.annotation.NonNull");
-    assertThat(compilation).hadWarningContaining("com.bumptech.glide.test.Extension#doSomething");
+    assertThat(compilation).hadWarningContaining("com.bumptech.glide4.test.Extension#doSomething");
   }
 
   @Test
@@ -363,7 +363,7 @@ public class InvalidGlideOptionsExtensionTest {
               emptyAppModule(),
               JavaFileObjects.forSourceLines(
                   "MissingRequestOptionsExtension",
-                  "package com.bumptech.glide.test;",
+                  "package com.bumptech.glide4.test;",
                   "import android.support.annotation.NonNull;",
                   "import com.bumptech.glide4.annotation.GlideExtension;",
                   "import com.bumptech.glide4.annotation.GlideOption;",
