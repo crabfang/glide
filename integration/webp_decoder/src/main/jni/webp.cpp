@@ -127,9 +127,9 @@ struct WebPFrame {
 
 // Class Names
 static const char* const kWebpImageClassName =
-        "com/bumptech/glide/integration/webp/WebpImage";
+        "com/bumptech/glide4/integration/webp/WebpImage";
 static const char* const kWebpFrameClassName =
-        "com/bumptech/glide/integration/webp/WebpFrame";
+        "com/bumptech/glide4/integration/webp/WebpFrame";
 
 // Cached fields related to WebPImage
 static jclass sClazzWebPImage;
@@ -594,7 +594,7 @@ void WebPFrame_nativeFinalize(JNIEnv* pEnv, jobject thiz) {
     return {};\
   }
 
-static constexpr const char* kWebpBitmapFactoryClassName = "com/bumptech/glide/integration/webp/WebpBitmapFactory";
+static constexpr const char* kWebpBitmapFactoryClassName = "com/bumptech/glide4/integration/webp/WebpBitmapFactory";
 
 static jclass webpBitmapFactoryClass;
 static jclass runtimeExceptionClass;
@@ -776,10 +776,10 @@ static jobject nativeDecodeByteArray(
 
 static JNINativeMethod sWebPImageMethods[] = {
         { "nativeCreateFromDirectByteBuffer",
-                "(Ljava/nio/ByteBuffer;)Lcom/bumptech/glide/integration/webp/WebpImage;",
+                "(Ljava/nio/ByteBuffer;)Lcom/bumptech/glide4/integration/webp/WebpImage;",
                 (void*)WebPImage_nativeCreateFromDirectByteBuffer },
         { "nativeGetFrame",
-                "(I)Lcom/bumptech/glide/integration/webp/WebpFrame;",
+                "(I)Lcom/bumptech/glide4/integration/webp/WebpFrame;",
                 (void*)WebPImage_nativeGetFrame },
         { "nativeGetSizeInBytes",
                 "()I",

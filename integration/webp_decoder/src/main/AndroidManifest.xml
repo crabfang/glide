@@ -4,7 +4,7 @@
     <application >
         <meta-data
             android:name="com.bumptech.glide4.integration.webp.WebpGlideModule"
-            android:value="GlideModule" />
+            android:value="Glide4Module" />
     </application>
 
 </manifest>

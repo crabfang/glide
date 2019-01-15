@@ -42,7 +42,7 @@ public final class SingleRequest<R> implements Request,
   /** Tag for logging internal events, not generally suitable for public use. */
   private static final String TAG = "Request";
   /** Tag for logging externally useful events (request completion, timing etc). */
-  private static final String GLIDE_TAG = "Glide";
+  private static final String GLIDE_TAG = "Glide4";
   private static final Pools.Pool<SingleRequest<?>> POOL = FactoryPools.threadSafe(150,
       new FactoryPools.Factory<SingleRequest<?>>() {
         @Override
