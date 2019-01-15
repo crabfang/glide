@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    compileOnly "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}"
+    compileOnly "com.android.support:support-fragment:${ANDROID_SUPPORT_VERSION}"
+    implementation project(':library')
+    annotationProcessor project(':annotation:compiler')
+}
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
+        consumerProguardFiles "proguard-rules.pro"
+
+        ndk {
+            abiFilter "armeabi-v7a"
+            abiFilter "arm64-v8a"
+            abiFilter "x86"
+            abiFilter "x86_64"
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs  'src/main/jni'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+apply from: "${rootProject.projectDir}/scripts/upload.gradle"

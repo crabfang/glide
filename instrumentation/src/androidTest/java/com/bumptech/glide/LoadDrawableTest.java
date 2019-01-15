@@ -1,7 +1,7 @@
 package com.bumptech.glide;
 
-import static com.bumptech.glide.test.Matchers.anyDrawable;
-import static com.bumptech.glide.test.Matchers.anyDrawableTarget;
+import static com.bumptech.glide4.test.Matchers.anyDrawable;
+import static com.bumptech.glide4.test.Matchers.anyDrawableTarget;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyBoolean;
@@ -24,13 +24,13 @@ import com.bumptech.glide4.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide4.load.engine.cache.LruResourceCache;
 import com.bumptech.glide4.load.engine.cache.MemoryCacheAdapter;
 import com.bumptech.glide4.load.engine.executor.GlideExecutor;
-import com.bumptech.glide.load.engine.executor.MockGlideExecutor;
+import com.bumptech.glide4.load.engine.executor.MockGlideExecutor;
 import com.bumptech.glide4.request.RequestListener;
 import com.bumptech.glide4.request.target.Target;
-import com.bumptech.glide.test.ConcurrencyHelper;
-import com.bumptech.glide.test.GlideApp;
-import com.bumptech.glide.test.ResourceIds;
-import com.bumptech.glide.test.TearDownGlide;
+import com.bumptech.glide4.test.ConcurrencyHelper;
+import com.bumptech.glide4.test.GlideApp;
+import com.bumptech.glide4.test.ResourceIds;
+import com.bumptech.glide4.test.TearDownGlide;
 import com.bumptech.glide4.util.Util;
 import org.junit.Before;
 import org.junit.Rule;

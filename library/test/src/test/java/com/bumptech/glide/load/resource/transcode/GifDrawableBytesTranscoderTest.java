@@ -1,6 +1,6 @@
-package com.bumptech.glide.load.resource.transcode;
+package com.bumptech.glide4.load.resource.transcode;
 
-import static com.bumptech.glide.tests.Util.mockResource;
+import static com.bumptech.glide4.tests.Util.mockResource;
 import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

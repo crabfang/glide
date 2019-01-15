@@ -17,7 +17,7 @@ static def getAndroidPathsForJavadoc() {
     [
             ':integration:okhttp',
             ':integration:okhttp3',
-            ':integration:volley',
+            ':integration:webp_decoder',
             ':integration:gifencoder',
             ':integration:recyclerview'
     ]
